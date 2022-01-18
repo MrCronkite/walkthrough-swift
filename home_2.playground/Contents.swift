@@ -32,6 +32,64 @@ import UIKit
  */
 
 
-//Задание1
+//Задание 1
+let propertyOne :Float = 3.14
+let propertyTwo :Float = 2.18
+
+var sumOfNumber :Double = Double(propertyOne+propertyTwo)
+
+print(sumOfNumber);
+
+
+//Задание 2
+
+let numberOne = 54
+let numberTwo = 33
+
+let result = numberOne/numberTwo
+let remainder = numberOne%numberTwo
+
+let numerator = (numberOne - result*numberTwo)/3
+let denominator = numberTwo/3
+
+print("При делении \(numberOne) на \(numberTwo) результат равен \(result), остаток равен \(remainder)")
+print("Результат деления \(numberOne) на \(numberTwo) равен \(result) \(numerator)/\(denominator)")
+
+//Задание 3
+
+let dayOfBirth = 2
+let mothOfBirth = 1
+let yearOfBirth = 1999
+let todayDay = 18
+let todayMoth = 3
+let todayYear = 2022
+let moutOfYear = 12
+let daysOfYear = 365
+let hoursInDay = 24
+let secInHour = 360
+let secondsInMinut = 60
+
+let myAge = todayYear-yearOfBirth
+let moutMyAge = myAge*(moutOfYear+todayMoth)
+let daysMyAge = myAge*daysOfYear+todayDay
+let hoursMyAge = daysMyAge*hoursInDay
+let secMyAge = hoursMyAge*secInHour
+
+print("\(myAge) years, \(moutMyAge) months, \(daysMyAge) days and \(secMyAge) seconds have passed since my birth")
+
+if (mothOfBirth>=3)&&(mothOfBirth<=5){
+    print("vesna")
+}else if(mothOfBirth>=6)&&(mothOfBirth<=8){
+    print("leto")
+}else if(mothOfBirth>=9)&&(mothOfBirth<=11){
+    print("osen")
+}else if(mothOfBirth<=2)&&(mothOfBirth<=12){
+  print("zima")
+}
+
+
+//Задание 4
+
+
 
 
