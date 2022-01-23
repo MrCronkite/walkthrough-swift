@@ -34,4 +34,16 @@ import UIKit
 
 //Задание 1
 
+let product = 30;
+var price = 0;
 
+if product<10{
+    price = product*1000
+    print(price)
+}else if(product>=10&&product<=20){
+    price = product*800
+    print(price)
+}else if product>20{
+    price = product*600
+    print(price)
+}
