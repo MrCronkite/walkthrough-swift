@@ -34,16 +34,31 @@ import UIKit
 
 //Задание 1
 
-let product = 30;
+let product = 15;
 var price = 0;
+var totalSum = 0;
 
 if product<10{
-    price = product*1000
-    print(price)
-}else if(product>=10&&product<=20){
-    price = product*800
-    print(price)
+    price = 1000
+}else if product<=20{
+    price = 800
 }else if product>20{
-    price = product*600
-    print(price)
+    price = 600
+}
+
+totalSum = price*product
+print(totalSum)
+
+//Задание 2
+
+var userInputAge = "34e"
+
+//var userAge :Int= Int(userInputAge)
+
+userInputAge = "34"
+var userAge = Int(userInputAge)
+print(userAge!)
+
+if let userAge = userAge {
+    print(userAge)
 }
