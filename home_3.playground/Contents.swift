@@ -54,10 +54,15 @@ print(totalSum)
 var userInputAge = "34e"
 
 //var userAge :Int= Int(userInputAge)
+//var userAge :Int= Int(userInputAge)
+
+
+
+
 
 userInputAge = "34"
 var userAge = Int(userInputAge)
-print(userAge!)
+print(userAge! )
 
 if let userAge = userAge {
     print(userAge)
