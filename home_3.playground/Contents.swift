@@ -54,11 +54,6 @@ print(totalSum)
 var userInputAge = "34e"
 
 //var userAge :Int= Int(userInputAge)
-//var userAge :Int= Int(userInputAge)
-
-
-
-
 
 userInputAge = "34"
 var userAge = Int(userInputAge)
@@ -66,4 +61,93 @@ print(userAge! )
 
 if let userAge = userAge {
     print(userAge)
+}
+
+//задание 3
+
+let dayOfBirth = 2
+let monthOfBirth = 3
+let yearOfBirth = 2018
+
+var currentDay = 4
+var currentMonth = 7
+var currentYear = 2019
+
+let secondsPerDay = 60 * 60 * 24 //Количество секунд в сутках
+let daysPerMonth = 30 //Количество дней в месяце
+let monthPerYear = 12 //Количество месяцев в году
+
+var yearsFromBirth = 0 //Количество полных лет
+var monthFromBirth = 0 //Количество полных месяцев
+var daysFromBirth = 0 //Количество дней с момента рождения
+var secondsFromBirth = 0 // Количество секунд
+
+let birthdayIsDone = currentMonth >= monthOfBirth && currentDay >= dayOfBirth
+
+if  birthdayIsDone {
+    yearsFromBirth = currentYear - yearOfBirth
+    monthFromBirth = (yearsFromBirth * monthPerYear) + (currentMonth - monthOfBirth)
+    daysFromBirth = (monthFromBirth * daysPerMonth) + (currentDay - dayOfBirth)
+} else {
+    yearsFromBirth = currentYear - yearOfBirth - 1
+    monthFromBirth = (yearsFromBirth + 1) * monthPerYear + (currentMonth - monthOfBirth)
+    daysFromBirth = (monthFromBirth * daysPerMonth) + (currentDay - dayOfBirth)
+    
+    if currentDay < dayOfBirth {
+        monthFromBirth -= 1
+    }
+}
+
+secondsFromBirth = daysFromBirth * secondsPerDay // Количество секунд
+
+print("\(yearsFromBirth) years, \(monthFromBirth) months, \(daysFromBirth) days and \(secondsFromBirth) seconds have passed since my birth")
+
+
+switch monthOfBirth {
+case 1...3:
+    print("I was born in the first quarter")
+case 4...6:
+    print("I was born in the second quarter")
+case 7...9:
+    print("I was born in the third quarter")
+case 10...12:
+    print("I was born in the fourth quarter")
+default:
+    break
+}
+
+
+
+//Задание 4
+
+var emergency = "A"
+
+switch emergency{
+case "A":
+    print("Выключить все электрические приборы")
+    fallthrough
+case "B":
+    print("Закрыть входные двери и окна")
+    fallthrough
+case "C":
+    print("Соблюдать спокойствие")
+default:
+    break
+}
+
+//Задание 5
+
+let color = "Brown" // Цвет конфеты
+let filling = "Chocolate" // Начинка конфеты
+
+switch color {
+case "Red" where filling == "Chocolate":
+    print("Положите эти конфеты в первую кучку")
+case "Yellow" where filling == "Nut":
+    print("Положите эти конфеты во вторую кучку")
+case "Brown" where filling == "Chocolate",
+     "Green" where filling == "Chocolate":
+    print("Положите эти конфеты в третью кучку")
+default:
+    break
 }
