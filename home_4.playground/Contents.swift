@@ -45,3 +45,74 @@ for _ in 1...5 {
 profit = deposit-500000
 
 print("Сумма вклада через 5 лет увеличится на \(profit) и составит \(deposit)")
+
+
+//задание 2
+
+var base = 3
+var power  = 20
+var result = 1
+
+for _ in 1...power  {
+    result *= base
+}
+
+print("\(base) в \(power) степени равно \(result)")
+
+
+
+//задание 3
+var arrey = [1,2,3,7,2,3,5,23,4,34,8,94]
+
+for i in arrey {
+    if i%2==0{
+        continue
+    }
+    print (i)
+}
+
+//задание 4
+
+var numberRandom = 0
+var count = 0
+for _ in 1...10{
+   numberRandom = Int.random(in:1...10)
+   count += 1
+    if numberRandom == 5 {
+        print("Что бы выпало число 5 понадобилось \(count) итерации")
+        break
+    }
+}
+
+
+//задание 5
+var a = 0
+var c = 2
+var b = 1
+var count_ = 0
+
+for _ in 1...20{
+    count_ += c-b
+    a += 1
+    if  count_ == 10{
+        print(a)
+    }
+}
+
+
+var distance = 0
+var numberOfDays = 0
+var isDay = true
+
+while distance != 10 {
+    if isDay {
+        distance += 2
+        numberOfDays += 1
+        isDay = false
+    } else {
+        distance -= 1
+        isDay = true
+    }
+}
+
+print(numberOfDays)
