@@ -86,18 +86,6 @@ for _ in 1...10{
 
 
 //задание 5
-var a = 0
-var c = 2
-var b = 1
-var count_ = 0
-
-for _ in 1...20{
-    count_ += c-b
-    a += 1
-    if  count_ == 10{
-        print(a)
-    }
-}
 
 
 var distance = 0
@@ -116,3 +104,54 @@ while distance != 10 {
 }
 
 print(numberOfDays)
+
+//задание 6
+
+var primeNumbers = [Int]() // 2, 3
+var primeNumber = 2 // 2
+var currentNumber = primeNumber // 5
+
+while primeNumbers.count < 100 {
+    for pn in 2...currentNumber { // pn = 3
+        if currentNumber % primeNumber == 0 {
+            break
+        }
+        primeNumber = pn
+    }
+    
+    if primeNumber == currentNumber {
+        primeNumbers.append(currentNumber)
+    }
+    
+    currentNumber += 1
+}
+
+
+print(primeNumbers)
+print("Количество элементов массива:", primeNumbers.count)
+
+
+// Способ 2
+
+// Don`t enter values more than 5000
+let neededNumberForArray = 100
+
+var finalArray = [Int]() // 2, 3
+var auxiliarySet: Set<Int> = [] //
+
+var currentValue = 2 // 5
+
+while finalArray.count < neededNumberForArray {
+    if !auxiliarySet.contains(currentValue) {
+        finalArray.append(currentValue)
+        for multiplier in 1...(neededNumberForArray * 10 / currentValue) {
+            auxiliarySet.insert(currentValue * multiplier) // 2, 4, 6, 8... 3, 6, 9, 12... 5, 10, 15
+        }
+    }
+    currentValue += 1
+}
+
+
+print("Колличество элементов массива = \(finalArray.count).\n", finalArray)
+
+
