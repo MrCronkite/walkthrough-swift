@@ -47,5 +47,27 @@ stats.a = setings.d
 print("я могу отжаться \(stats.1) раза, подтянуться \(stats.0) раз, присесть \(stats.2 ) раз")
 
 
+var apples: Int? = 5
+
+if apples == nil {
+    print("nil apples")
+}else{
+    print(apples)
+}
+
+
+if var numb = apples{
+    numb+=2
+    print(numb)
+}
+
+
+var number_: Int! = nil
+
+number_ = 4
+
+if let g = number_{
+    print(g+2)
+    }
  
 var greeting = "Hello, playground"
