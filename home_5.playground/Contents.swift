@@ -34,5 +34,18 @@ import UIKit
 
 
 
+var stats = (a: 23, b: 12, c: 67)
 
+print("я могу отжаться \(stats.a) раза, подтянуться \(stats.b) раз, присесть \(stats.c) раз")
+
+print("я могу отжаться \(stats.1) раза, подтянуться \(stats.0) раз, присесть \(stats.2 ) раз")
+
+var setings = (d: 54, h: 7, k: 43)
+
+stats.a = setings.d
+
+print("я могу отжаться \(stats.1) раза, подтянуться \(stats.0) раз, присесть \(stats.2 ) раз")
+
+
+ 
 var greeting = "Hello, playground"
