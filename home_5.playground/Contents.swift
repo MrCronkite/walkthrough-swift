@@ -69,5 +69,39 @@ number_ = 4
 if let g = number_{
     print(g+2)
     }
+
+
+let numb1 = "asdasd"
+let numb2 = "sdwdas12"
+let numb3 = "44"
+let numb4 = "76"
+let numb5 = "12"
+
+if Int(numb1) != nil{
+   print(numb1)
+}
+
+if Int(numb2) != nil{
+    print(numb2)
+}
+
+if let numb3_3 = Int(numb3){
+    print(numb3_3)
+}
+
+let numb4_4 = Int(numb4)
+    print(numb4_4)
+
+
+let numb5_5 = Int(numb5)
+print(numb5_5)
+
+var result12 = numb5_5! + numb4_4!
+
+print(result12)
+
+
+
+
  
 var greeting = "Hello, playground"
