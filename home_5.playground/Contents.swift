@@ -34,74 +34,24 @@ import UIKit
 
 
 
-var stats = (a: 23, b: 12, c: 67)
+// #задание 1
 
-print("я могу отжаться \(stats.a) раза, подтянуться \(stats.b) раз, присесть \(stats.c) раз")
+//массивы
 
-print("я могу отжаться \(stats.1) раза, подтянуться \(stats.0) раз, присесть \(stats.2 ) раз")
+let arrayOfCharcters: [Character] = ["a", "b", "c"]
 
-var setings = (d: 54, h: 7, k: 43)
+var arrayOfIntegers = [Int]()
 
-stats.a = setings.d
+arrayOfIntegers = [1, 2, 3]
 
-print("я могу отжаться \(stats.1) раза, подтянуться \(stats.0) раз, присесть \(stats.2 ) раз")
+arrayOfIntegers = [4, 5, 6]
 
+arrayOfIntegers +=  [4,5]
 
-var apples: Int? = 5
+arrayOfIntegers.append(7)
 
-if apples == nil {
-    print("nil apples")
-}else{
-    print(apples)
-}
+print(arrayOfIntegers)
 
+arrayOfIntegers.insert(1, at: 3)
 
-if var numb = apples{
-    numb+=2
-    print(numb)
-}
-
-
-var number_: Int! = nil
-
-number_ = 4
-
-if let g = number_{
-    print(g+2)
-    }
-
-
-let numb1 = "asdasd"
-let numb2 = "sdwdas12"
-let numb3 = "44"
-let numb4 = "76"
-let numb5 = "12"
-
-if Int(numb1) != nil{
-   print(numb1)
-}
-
-if Int(numb2) != nil{
-    print(numb2)
-}
-
-if let numb3_3 = Int(numb3){
-    print(numb3_3)
-}
-
-let numb4_4 = Int(numb4)
-    print(numb4_4)
-
-
-let numb5_5 = Int(numb5)
-print(numb5_5)
-
-var result12 = numb5_5! + numb4_4!
-
-print(result12)
-
-
-
-
- 
-var greeting = "Hello, playground"
+print(arrayOfIntegers)
