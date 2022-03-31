@@ -1,4 +1,5 @@
 import UIKit
+import Foundation
 
 
 /*:
@@ -47,4 +48,16 @@ for element in dictionary{
     print("\(element.key) \(element.value.last!)")
     
 }
+
+// #задание 2
+
+func calcTime(year :Int , mouth :Int ) -> Int{
+    let dayOfYear = (2022 - year) * 365
+    let dayOfMouth = mouth * 29
+    
+
+    return dayOfYear + dayOfMouth
+}
+
+print(calcTime(year: 1999, mouth: 3))
 
