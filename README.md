@@ -37,10 +37,13 @@
 
 ## массивы 
 
-> let arrey = [Int]()
-> добавление _+=_ _append(9)_ _insert(1, at:3)_
-> удаление _removeLast()_ _removeFirst()_ _remove(at: 1)_ _removeAll_ 
-> количество элементов _count_
-> проверка _isEmpty_
+- let arrey = [Int]()
+- добавление _+=_ _append(9)_ _insert(1, at:3)_
+- удаление _removeLast()_ _removeFirst()_ _remove(at: 1)_ _removeAll_ 
+- количество элементов _count_
+- проверка _isEmpty_
+
+
+## множества 
 
 

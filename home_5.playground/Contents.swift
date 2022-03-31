@@ -36,24 +36,15 @@ import UIKit
 
 // #задание 1
 
-//массивы
+var dictionary:[String: [String]] = [:]
 
-let arrayOfCharcters: [Character] = ["a", "b", "c"]
+dictionary["Салват Юлаев"] = ["3:6", "5.5"]
+dictionary["Авангард"] = ["2:1", "2.3"]
+dictionary["АкБарс"] = ["3:3", "1.2"]
 
-var arrayOfIntegers = [Int]()
-
-arrayOfIntegers = [1, 2, 3]
-
-arrayOfIntegers = [4, 5, 6]
-
-arrayOfIntegers +=  [4,5]
-
-arrayOfIntegers.append(7)
-
-print(arrayOfIntegers)
-
-arrayOfIntegers.insert(1, at: 3)
-
-print(arrayOfIntegers.isEmpty)
-
+for element in dictionary{
+    print("\(element.key) \(element.value.first!)")
+    print("\(element.key) \(element.value.last!)")
+    
+}
 
