@@ -61,3 +61,18 @@ func calcTime(year :Int , mouth :Int ) -> Int{
 
 print(calcTime(year: 1999, mouth: 3))
 
+var kup = [500, 50, 500, 1000, 500, 50, 100, 2000]
+
+func sumCash(a :[Int]) -> Int{
+    var d = 0
+    
+    for i in a {
+        d += i
+    }
+    return d
+}
+
+print(sumCash(a: kup))
+
+
+func 
