@@ -89,7 +89,20 @@ func arreyNumbers(a :Int, b :Int) ->[Int]{
     return arrey
 }
 
-print(arreyNumbers(a: 1, b: 100))
 
+var massivX = arreyNumbers(a: 1, b: 100)
 
+print(massivX)
 
+func evenRemove(a :[Int]) ->[Int]{
+    var newArrey :[Int] = []
+    for i in a {
+        if i % 2 != 0{
+            newArrey += [i]
+        }
+    }
+    
+    return newArrey
+}
+
+print(evenRemove(a: massivX))
