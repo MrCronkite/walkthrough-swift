@@ -75,4 +75,8 @@ func sumCash(a :[Int]) -> Int{
 print(sumCash(a: kup))
 
 
-func 
+func evenNumber(a :Int) -> Bool{
+    return a%2 == 0 ? true : false
+}
+
+print(evenNumber(a: 4))
