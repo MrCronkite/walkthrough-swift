@@ -79,4 +79,17 @@ func evenNumber(a :Int) -> Bool{
     return a%2 == 0 ? true : false
 }
 
-print(evenNumber(a: 4))
+print(evenNumber(a: 48))
+
+func arreyNumbers(a :Int, b :Int) ->[Int]{
+    var arrey :[Int] = []
+    for _ in a...b {
+        arrey += [Int.random(in: a...b)]
+    }
+    return arrey
+}
+
+print(arreyNumbers(a: 1, b: 100))
+
+
+
