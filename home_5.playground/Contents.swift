@@ -106,3 +106,30 @@ func evenRemove(a :[Int]) ->[Int]{
 }
 
 print(evenRemove(a: massivX))
+
+
+
+func evereonman(awer: Bool) -> (Int) -> Int {
+    
+    func evrithing(i :Int) -> Int{
+        return  i-2
+    }
+    
+    func evrithing2(i :Int) -> Int{
+        return i*2
+    }
+
+    return awer ? evrithing : evrithing2
+    
+}
+
+var rec = 12
+var result12 = evereonman(awer: rec>0)
+
+while rec != 0 {
+    print(rec)
+    rec = result12(rec)
+}
+
+
+
