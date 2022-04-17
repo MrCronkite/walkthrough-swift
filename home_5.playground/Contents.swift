@@ -133,3 +133,20 @@ while rec != 0 {
 
 
 
+func filterLesThanValue(value: Int, numbers: [Int]) -> [Int]{
+    var filteredSetOfNumbers = [Int]()
+    
+    for number in numbers {
+        if number < value {
+            filteredSetOfNumbers.append(number)
+        }
+    }
+    return filteredSetOfNumbers
+}
+
+let someValue = 5
+let arrayOfNumbers = [5, 6, 2, 3, 1, 8, 46, 7]
+
+print(filterLesThanValue(value: 5, numbers: arrayOfNumbers))
+
+
