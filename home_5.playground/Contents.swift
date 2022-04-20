@@ -159,7 +159,7 @@ func sortName(_ str1: String, _ str2: String)-> Bool{
     return str1 > str2
 }
 
-var newArreyName = name.sorted { str1, str2 in str1>str2 }
+var newArreyName = name.sorted { $0 > $1 }
 
 print(newArreyName)
 
