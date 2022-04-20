@@ -134,19 +134,33 @@ while rec != 0 {
 
 
 func filterLesThanValue(value: Int, numbers: [Int]) -> [Int]{
-    var filteredSetOfNumbers = [Int]()
+    var newArrey = [Int]()
     
     for number in numbers {
-        if number < value {
-            filteredSetOfNumbers.append(number)
+        if number < value{
+            newArrey.append(number)
         }
     }
-    return filteredSetOfNumbers
+    
+    return newArrey
 }
 
 let someValue = 5
 let arrayOfNumbers = [5, 6, 2, 3, 1, 8, 46, 7]
 
+
+
+
 print(filterLesThanValue(value: 5, numbers: arrayOfNumbers))
+
+var name = ["Alex", "Stive", "Tom", "Rodgers", "Nikki"]
+
+func sortName(_ str1: String, _ str2: String)-> Bool{
+    return str1 > str2
+}
+
+var newArreyName = name.sorted { str1, str2 in str1>str2 }
+
+print(newArreyName)
 
 
