@@ -153,13 +153,11 @@ let arrayOfNumbers = [5, 6, 2, 3, 1, 8, 46, 7]
 
 print(filterLesThanValue(value: 5, numbers: arrayOfNumbers))
 
-var name = ["Alex", "Stive", "Tom", "Rodgers", "Nikki"]
+var name = [6, 5, 12, 9, 2]
 
-func sortName(_ str1: String, _ str2: String)-> Bool{
-    return str1 > str2
-}
+func sortName(str1 :String, str2 :String)->Bool{ return str1 > str2}
 
-var newArreyName = name.sorted { $0 > $1 }
+var newArreyName = name.sorted { $0>$1 }
 
 print(newArreyName)
 
