@@ -1,126 +1,53 @@
 import UIKit
 
-
-class Post {
-    var name = "vlad"
-    var age = "34"
-    var surname = "shimchenko"
-    
-    private var numberOfcomments = 0
-    
-    func addComment(){
-        numberOfcomments+=2
-    }
-    
-    func description() -> Int{
-        return numberOfcomments
-    }
-}
-
-
-let firstPost = Post()
-
-print(Post().name)
-print(firstPost.age)
-print(Post().surname)
-
-let secondPost = firstPost
-
-secondPost.surname = "kotov"
-
-print(secondPost.surname)
-
-print(firstPost.surname)
-
-firstPost === secondPost
-
-secondPost.addComment()
-
-print(secondPost.description())
-
-
-
-//инициализация
-
-class Human {
-    var name = ""
-    var age = 0
-    
-    init() {}
-    
-    init(name: String, age: Int){
-        self.name = name
-        self.age = age
-    }
-}
-
-let person = Human(name: "vladik", age: 45)
-
-person.age
-person.name
-
-
-//наследование
-
-
-class Parent {
-    var nameMather = ""
-    var nameFather = ""
-    private var ageMather = 45
-    
-    init(){}
-    
-    init(nameMather: String, nameFather: String ){
-        self.nameFather = nameFather
-        self.nameMather = nameMather
-    }
-    
-    func description()->Int{
-        return ageMather
-    }
-}
-
-
-let family = Parent(nameMather: "tania", nameFather: "sasha")
-
-family.nameMather
-
-class Child :Parent{
-    var ageChild = 0
-    
-    func age(){
-        ageChild = self.description() - 30
-    }
-}
-
-let baby = Child()
-
-baby.age()
-print(baby.ageChild)
-
-
-
-//полиморфизм
-
-class Figure {
-    func draw(){}
-}
-
-class Circle: Figure{
-    override func draw() {
-         print("Draw Circle")
-    }
-}
-
-let circle = Circle()
-
-func drawFigure(_ figure: Figure){
-    figure.draw()
-}
-
-drawFigure(circle)
-
-    
+/*:
+ ## Задание 1
+ 1.1 Создайте новый класс `Orange` со следующими свойствами:
+ - `color: String`
+ - `taste: String`
+ - `radius: Double`
+ На ваше усмотрение можете создать или не создавать инициализатор
+ */
+//: 1.2 Создайте экземпляр класса `Orange` с именем `someOrange`
+/*:
+ 1.3 Проинициализируйте все переменные объекта someOrange следующими значениями:
+ - `color` — *Orange*
+ - `taste` — *Sweet*
+ - `radius` — *95*
+*/
+//: 1.4 Выведите на консоль сообщение «Orange has <...> color and <...> taste». Обращайтесь к этим значениям напрямую через экземпляр класса, не создавая для них отдельных переменных
+//: 1.5 Создайте новую константу `orangeVolume` и присвойте ей значение объема апельсина (Число Пи в Swift можно получить через константу `Double.pi`. Формулу расчета можно погуглить). Выведите значение `orangeVolume` на консоль
+/*:
+1.6 Дополните класс `Orange` новым свойством `orangeVolume`
+1.7 Создайте в классе `Orange` новый метод `calculateOrangeVolume` и перенесите в него расчет объема апельсина
+1.8 Вызовите метод calculateOrangeVolume
+ */
+/*:
+ ## Задание 2
+ 2.1 Создайте класс `Figure` (родительский класс) со следующими свойствами:
+ - `height: Float`
+ - `width: Float`
+ - `radius: Float`
+ - `square: Float`
+ - `perimeter: Float`
+ Oбъявите в классе виртуальные методы (это такие методы, которые нужно будет переопределить) `squareOfFigure` и `perimeterOfFigure` для расчетов площади и периметра (длины) фигуры соответственно. Методы должены возвращать `Float`. Создайте инициализатор для сторон прямоугольника и отдельный инициализатор для радиуса.
+ */
+/*:
+ 2.2. Создайте классы `Circle`, `Rectangle` и `Ellipse`, унаследовав их от `Figure`. Переопределите методы `squareOfFigure` и `perimeterOfFigure` для каждого класса в соответствии с правилом расчета площади или периметра (длины) конкретной фигуры
+ 2.3 В каждом классе создайте метод `description`, который выводит на консоль сообщение следующего вида: «Площадь фигуры <тип фигуры> равна <... >, периметр (длина) равна <...>»
+ */
+//: 2.4 Создайте по экземпляру каждого класса, кроме `Figure`, проинициализируйте свойства `height` и `width` или `radius` для каждого класса в любые значения и вызовите у каждого экземпляра класса метод `description`
+/*:
+ ## Задание 3
+ 3.1 Создайте класс `Employee` (сотрудник) со следующими свойствами:
+ - `salary`
+ - `name`
+ - `surname`
+ */
+//: 3.2 Создайте массив из 5 объектов под названием `names` со следующими элементами: *John*, *Aaron*, *Tim*, *Ted*, *Steven*. И еще один массив `surnames` с элементами: *Smith*, *Dow*, *Isaacson*, *Pennyworth*, *Jankins*
+//: 3.3 Объявите массив `employees` и создайте цикл, в котором он заполняется десятью объектами класса `Employee` таким образом, что свойства `name` и `surname` инициализируются случайными именами и фамилиями из массивов `names` и `surnames`, соответственно. Свойство `salary` (зарплата) тоже должно генерироваться в случайном диапазоне от *$1000* до *$2000*
+//: 3.4 Пройдитесь по массиву `employees` при помощи `for-in` и выведите информацию по каждому объекту в виде: «<имя> <фимилия>’s salary is $<... >»
+//: 3.5 Создайте отдельный массив на основании `employees`, который включает только тех работников, зарплата которых чётная. Выведите информацию по каждому сотруднику с четной зарплатой, как в пункте 3.4
 
 
 
