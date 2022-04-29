@@ -6,10 +6,14 @@ class Post {
     var age = "34"
     var surname = "shimchenko"
     
-    var numberOfcomments = 0
+    private var numberOfcomments = 0
     
     func addComment(){
         numberOfcomments+=2
+    }
+    
+    func description() -> Int{
+        return numberOfcomments
     }
 }
 
@@ -32,7 +36,8 @@ firstPost === secondPost
 
 secondPost.addComment()
 
-print(secondPost.numberOfcomments)
+print(secondPost.description())
+
 
 
 //инициализация
@@ -53,6 +58,50 @@ let person = Human(name: "vladik", age: 45)
 
 person.age
 person.name
+
+
+//наследование
+
+
+class Parent {
+    var nameMather = ""
+    var nameFather = ""
+    private var ageMather = 45
+    
+    init(){}
+    
+    init(nameMather: String, nameFather: String ){
+        self.nameFather = nameFather
+        self.nameMather = nameMather
+    }
+    
+    func description()->Int{
+        return ageMather
+    }
+}
+
+
+let family = Parent(nameMather: "tania", nameFather: "sasha")
+
+family.nameMather
+
+class Child :Parent{
+    var ageChild = 0
+    
+    func age(){
+        ageChild = self.description() - 30
+    }
+}
+
+let baby = Child()
+
+baby.age()
+print(baby.ageChild)
+
+
+
+
+
         
 
 
