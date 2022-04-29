@@ -100,6 +100,28 @@ print(baby.ageChild)
 
 
 
+//полиморфизм
+
+class Figure {
+    func draw(){}
+}
+
+class Circle: Figure{
+    override func draw() {
+         print("Draw Circle")
+    }
+}
+
+let circle = Circle()
+
+func drawFigure(_ figure: Figure){
+    figure.draw()
+}
+
+drawFigure(circle)
+
+    
+
 
 
         
