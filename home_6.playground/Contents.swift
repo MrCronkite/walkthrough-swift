@@ -1,4 +1,5 @@
 import UIKit
+import Foundation
 
 /*:
  ## Задание 1
@@ -52,6 +53,32 @@ import UIKit
 
 
         
+class Orange{
+    var color: String
+    var taste: String
+    var radius: Double
+    var orangeVolume: Double = 0
+    
+    
+    func calculateOrangeVolume(){
+        orangeVolume = pow(self.radius, 3)*4*Double.pi/3
+    }
 
+    
+    init(_ color: String, _ taste: String, _ radius: Double){
+        self.radius = radius
+        self.color = color
+        self.taste = taste
+    }
+    
+}
+
+let someOrange = Orange("red", "sweet", 34)
+
+someOrange.calculateOrangeVolume()
+
+someOrange.orangeVolume
+
+print("\(someOrange.taste) так так так \(someOrange.color) так так так \(someOrange.radius)")
 
 
