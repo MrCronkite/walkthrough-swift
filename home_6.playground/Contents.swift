@@ -155,7 +155,7 @@ class Ellipse: Figure{
         self.square = Float.pi*self.weight * self.height/4
     }
     internal override func perimetrOfFigure() {
-        self.perimeter = 2*Float.pi*sqrt(pow(self.weight,2)*pow(self.height, 2)/8)
+        self.perimeter = 2*Float.pi*sqrt((pow(self.weight, 2) + pow(self.height, 2))/8)
     }
     
     func description(){
@@ -165,6 +165,8 @@ class Ellipse: Figure{
     }
 }
 
+
+var a = pow(4,2)
 
 
 let cirlce = Circle(radius: 13.4)
