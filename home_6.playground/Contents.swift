@@ -51,7 +51,7 @@ import Foundation
 //: 3.5 Создайте отдельный массив на основании `employees`, который включает только тех работников, зарплата которых чётная. Выведите информацию по каждому сотруднику с четной зарплатой, как в пункте 3.4
 
 
-
+//задание 1
         
 class Orange{
     var color: String
@@ -80,5 +80,100 @@ someOrange.calculateOrangeVolume()
 someOrange.orangeVolume
 
 print("\(someOrange.taste) так так так \(someOrange.color) так так так \(someOrange.radius)")
+
+
+//задание 2
+
+class Figure{
+    var height: Float = 0
+    var weight: Float = 0
+    var square: Float = 0
+    var perimeter: Float = 0
+    func squareOfFigure(){}
+    func perimetrOfFigure(){}
+}
+
+
+class Circle: Figure{
+    
+    var radius: Float = 0
+    
+    override init() {}
+    init(radius: Float) {
+        self.radius = radius
+    }
+    
+    internal override func squareOfFigure() {
+        self.square = Float.pi*pow(self.radius, 2)
+    }
+    internal override func perimetrOfFigure() {
+        self.perimeter = 2*self.radius*Float.pi
+    }
+    
+    func description(){
+        self.perimetrOfFigure()
+        self.squareOfFigure()
+        print("Площадь круга = \(cirlce.square) Периметр круга =  \(cirlce.perimeter)")
+    }
+}
+
+class Rectangle: Figure{
+    
+    override init(){}
+    init(height: Float, weight: Float){
+        super.init()
+        self.height = height
+        self.weight = weight
+    }
+    
+    internal override func squareOfFigure() {
+        self.square = self.weight * self.height
+    }
+    internal override func perimetrOfFigure() {
+        self.perimeter = 2*(self.weight+self.height)
+    }
+    
+    func description(){
+        self.perimetrOfFigure()
+        self.squareOfFigure()
+        print("Периметр прямоугольника \(self.perimeter) Площадь прямоугольника \(self.square)")
+    }
+}
+
+
+
+class Ellipse: Figure{
+    
+    override init(){}
+    init(height: Float, weight: Float){
+        super.init()
+        self.height = height
+        self.weight = weight
+    }
+    
+    internal override func squareOfFigure() {
+        self.square = Float.pi*self.weight * self.height/4
+    }
+    internal override func perimetrOfFigure() {
+        self.perimeter = 2*Float.pi*sqrt(pow(self.weight,2)*pow(self.height, 2)/8)
+    }
+    
+    func description(){
+        self.perimetrOfFigure()
+        self.squareOfFigure()
+        print("Периметр эллипса \(self.perimeter) Площадь эллипса \(self.square)")
+    }
+}
+
+
+
+let cirlce = Circle(radius: 13.4)
+let rectangle = Rectangle(height: 12.2, weight: 3.2)
+let ellipse = Ellipse(height: 4.2, weight: 6.2)
+ellipse.description()
+cirlce.description()
+rectangle.description()
+
+
 
 
