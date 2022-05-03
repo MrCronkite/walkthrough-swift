@@ -51,6 +51,58 @@ import Foundation
 //: 3.5 Создайте отдельный массив на основании `employees`, который включает только тех работников, зарплата которых чётная. Выведите информацию по каждому сотруднику с четной зарплатой, как в пункте 3.4
 
 
+
+class Employee{
+    var salary = 0
+    var name = ""
+    var surname = ""
+    
+    init(){}
+    
+    init(name: String, surname: String, salary: Int){
+        self.name = name
+        self.surname = surname
+        self.salary = salary
+    }
+}
+
+var names: [String]
+var surnames: [String]
+
+names = ["John", "Aaron", "Tim", "Ted", "Steven"]
+surnames = ["Smith", "Dow", "Isaacson", "Pennyworth", "Jankins"]
+
+var employees: [Employee] = []
+
+
+for _ in 1...10 {
+    let salary = Int.random(in: 1000...2000)
+      
+      if !names.isEmpty && !surnames.isEmpty {
+          
+          let employee = Employee(name: names.randomElement()!,
+                                  surname: surnames.randomElement()!,
+                                  salary: salary)
+          
+          employees.append(employee)
+      }
+    
+}
+
+for employee in employees {
+    print("\(employee.name) \(employee.surname)’s salary is $\(employee.salary)")
+}
+
+
+
+
+
+
+
+
+
+
+
 //задание 1
         
 class Orange{
