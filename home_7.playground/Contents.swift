@@ -58,3 +58,23 @@ planet.rawValue
 if let pussebalNumber = Planet(rawValue: 9){
     print(pussebalNumber)
 }
+
+enum Days {
+    case workday(String, Int)
+    case weekend(String)
+}
+
+var days = Days.workday("set alarm to", 8)
+
+func setAlarm(days: Days){
+    switch days {
+    case let .workday(message, time):
+        print("\(message) и \(time)")
+    case let .weekend(weekendMess):
+        print("\(weekendMess)")
+    }
+}
+
+setAlarm(days: .weekend("hello"))
+
+setAlarm(days: days)
