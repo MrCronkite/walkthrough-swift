@@ -52,56 +52,6 @@ import Foundation
 
 
 
-class Employee{
-    var salary = 0
-    var name = ""
-    var surname = ""
-    
-    init(){}
-    
-    init(name: String, surname: String, salary: Int){
-        self.name = name
-        self.surname = surname
-        self.salary = salary
-    }
-}
-
-var names: [String]
-var surnames: [String]
-
-names = ["John", "Aaron", "Tim", "Ted", "Steven"]
-surnames = ["Smith", "Dow", "Isaacson", "Pennyworth", "Jankins"]
-
-var employees: [Employee] = []
-
-
-for _ in 1...10 {
-    let salary = Int.random(in: 1000...2000)
-      
-      if !names.isEmpty && !surnames.isEmpty {
-          
-          let employee = Employee(name: names.randomElement()!,
-                                  surname: surnames.randomElement()!,
-                                  salary: salary)
-          
-          employees.append(employee)
-      }
-    
-}
-
-for employee in employees {
-    print("\(employee.name) \(employee.surname)’s salary is $\(employee.salary)")
-}
-
-
-
-
-
-
-
-
-
-
 
 //задание 1
         
@@ -227,6 +177,59 @@ let ellipse = Ellipse(height: 4.2, weight: 6.2)
 ellipse.description()
 cirlce.description()
 rectangle.description()
+
+
+// задание3
+
+
+class Employee{
+    var salary = 0
+    var name = ""
+    var surname = ""
+    
+    init(){}
+    
+    init(name: String, surname: String, salary: Int){
+        self.name = name
+        self.surname = surname
+        self.salary = salary
+    }
+}
+
+var names: [String]
+var surnames: [String]
+
+names = ["John", "Aaron", "Tim", "Ted", "Steven"]
+surnames = ["Smith", "Dow", "Isaacson", "Pennyworth", "Jankins"]
+
+var employees: [Employee] = []
+
+
+for _ in 1...10 {
+    let salary = Int.random(in: 1000...2000)
+      
+      if !names.isEmpty && !surnames.isEmpty {
+          
+          let employee = Employee(name: names.randomElement()!,
+                                  surname: surnames.randomElement()!,
+                                  salary: salary)
+          
+          employees.append(employee)
+      }
+    
+}
+
+for employee in employees {
+    print("\(employee.name) \(employee.surname)’s salary is $\(employee.salary)")
+}
+
+
+
+
+
+
+
+
 
 
 
