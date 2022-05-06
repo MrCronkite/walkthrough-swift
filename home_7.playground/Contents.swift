@@ -140,3 +140,22 @@ iPhoneX.name = "iPhone X"
 
 iPhoneX.getSpecs()
 iPhoneXR.getSpecs()
+
+struct Rectangl{
+    var width: Int
+    var height: Int
+    
+    func perimetr() -> Int{
+        return 2*(width+height)
+    }
+    
+   mutating func scale(width: Int, height: Int){
+        self.width += width
+        self.height += height
+    }
+}
+
+var rectanle = Rectangl(width: 10, height: 20)
+rectanle.perimetr()
+rectanle.scale(width: 10, height: 2)
+rectanle.perimetr()
