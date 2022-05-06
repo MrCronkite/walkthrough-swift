@@ -78,3 +78,65 @@ func setAlarm(days: Days){
 setAlarm(days: .weekend("hello"))
 
 setAlarm(days: days)
+
+struct PositionOnMap {
+    var player: String
+    var x: Int
+    var y: Int
+    
+    func getPosition(){
+        print("The Position of \(player): x\(x):y\(y)")
+    }
+}
+
+let playerOnePosition = PositionOnMap(player: "Player One", x: 10, y: 3)
+
+playerOnePosition.player
+
+playerOnePosition.getPosition()
+
+class MacBook{
+    var name: String
+    var year: Int
+    var color: String
+    
+    init(name: String, year: Int, color: String){
+        self.name = name
+        self.year = year
+        self.color = color
+    }
+    
+    func getSpects(){
+        print("\(name) \(year) \(color)")
+    }
+}
+
+let macBookPro = MacBook(name: "MacBook Pro", year: 2018, color: "Silver")
+
+macBookPro.getSpects()
+
+let macBookAir = macBookPro
+macBookAir.name = "MacBook Air"
+
+macBookAir.getSpects()
+macBookPro.getSpects()
+
+struct iPhone {
+    var name: String
+    var color: String
+    var capacity: Int
+    
+    func getSpecs(){
+        print("\(name) \(color) \(capacity)Gb")
+    }
+}
+
+let iPhoneXR = iPhone(name: "iPhone XR", color: "Green", capacity: 128)
+
+iPhoneXR.getSpecs()
+
+var iPhoneX = iPhoneXR
+iPhoneX.name = "iPhone X"
+
+iPhoneX.getSpecs()
+iPhoneXR.getSpecs()
