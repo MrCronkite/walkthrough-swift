@@ -1,161 +1,47 @@
 import Foundation
 
+/*:
+ ## Задание 1
+ 1.1 Создайте перечисление `CalculationType`, содержащее четыре математических действия — *сложение*, *вычитание*, *умножение* и *деление* (если не знаете английские наименования — [translate.google.com](http://translate.google.com))
+ 1.2 Напишите функцию возвращающую `Int` и принимающую в качестве аргументов три переменные: число один, число два и тип математической операции. Внутри функции, в зависимости от значения переменной типа `CalculationType` выполните соответствующую математическую операцию с константами и верните результат. Для перебора всех возможных результатов используйте конструкцию `switch`. Присвойте своей функции такое название, что бы из него было понятно для чего служит эта функция, но при этом сделайте это имя максимально лаконичным.
+ 1.3 Вызовите эту функцию четыре раза для каждого математического оператора в отдельности. Постарайтесь сделать реализацию максимально гибкой — такой, что бы результат вывода можно было легко изменить, поменяв значения переменных. Доработайте функцию так, что бы при каждом её вызове на консоль выводился результат следующего содержания: «Результат сложения (вычитания, деления, умножения) <…> и <…> равен <…>» для каждого отдельного случая.
+
+ ## Задание 2
+ 2.1 Создайте перечисление `CurrencyUnit` со следующими членами: `rouble`, `dollar`, `euro`. Данные члены перечисления имеют тип связанных значений следующего вида: `([String], String)`, где массив должен содержать перечень тех стран, в которых используется валюта, а тип стринг - сокращенное наименование валюты.
+ 2.2 Создайте переменную `roubleCurrency` и присвойте ей соответствующие значения
+ 2.3 Внутри перечисления `CurrencyUnit` создайте еще одно перечисление `DollarCountrys`, в котором содержиться перчень стран, национальной валютой которых является доллар (USA, Canada, Australia)
+ 2.4 Расширьте тип связанных значений (ассоциированный параметр) для члена `dollar`, который будет сообщать о том, валютой какой страны является данный доллар
+ 2.5 Создайте переменную `someCurrency` и присвойете ей значения относящиеся к доллару
+ 2.6 Используя ветвление `switch` выведите на коносль сообщение в котором описано что за валюта, в каких странах катируется, короткое наименование.
+ 
+ ## Задание 3
+ 3.1 Создайте структуру `Car` со следующими элементами:
+ - `name: String`
+ - `porductionYear: Int`
+ - `horsePower: Int`
+ 3.2 Создайте экземпляр структуры `Car` с названием какого либо автомобильного бренда, например `honda`.
+ 3.3 Создайте копию экземпляра `honda`, например, `hondaCivic`
+ 3.4 Присвойте новое значение переменной name структуры `hondaCivic`
+ 3.5 Создайте цикл с пятью итерациями, в котором в каждой итерации необходимо увеличивать значение horsePower у структуры hondaCivic на единицу
+ 3.6 Выведите значения структур `honda` и `hondaCivic` на консоль в следующем виде: "Мощность двигателя <..> составляет <...> л.с."
+
+ ## Задание 4
+ 4.1 Создайте структуру `PlayerInChess`, в которой есть два свойства: `name` с типом `Sting` и `wins` с типом `Int`
+ 4.2 Создайте экзмепляр струкутуры и инициализируйте её свойства
+ 4.3 Расширьте структуру PlayerInChess методом description, который должен выводить на консоль имя игрока и количество его побед
+ 4.4 Вызвите данный метод из экземпляра структуры
+ 4.5 Расширте структуру методом addWins, который должен принимать целочисленное значение и увеличивать количество побед на это значение.
+ 4.6 Вызовите метода addWins из экземпляра структуры, затем вызовите метод description
+*/
 
 
-enum Weekday: String {
-    case monday = "1"
-    case tuesday = "aaaaaa"
-    case wednesday
-    case thuesday
-    case friday
-    case suterday
-    case sunday = "gfdsa"
+//задание 1
+
+enum calculationType: String{
+    case addition = "+"
+    case substraction
+    case multiolication
+    case division
 }
 
-
-var weekday: Weekday
-
-weekday = .sunday
-
-func setupAlarm(){
-    switch weekday{
-    case .sunday:
-        print("sunday")
-    case .suterday:
-        print("sunday")
-    case .friday:
-        print("sunday")
-    case .tuesday:
-        print("sunday")
-    case .thuesday:
-        print("sunday")
-    case .wednesday:
-        print("sunday")
-    case .monday:
-        print("sunday")
-    }
-}
-
-
-print(weekday)
-
-weekday = .friday
-
-print(weekday.rawValue)
-
-
-enum Planet: Int{
-    case mercury = 1, venus, earth = 6, mars, jupiter, saturn, uranus
-}
-
-var planet: Planet
-
-planet = .jupiter
-
-planet.rawValue
-
-
-if let pussebalNumber = Planet(rawValue: 9){
-    print(pussebalNumber)
-}
-
-enum Days {
-    case workday(String, Int)
-    case weekend(String)
-}
-
-var days = Days.workday("set alarm to", 8)
-
-func setAlarm(days: Days){
-    switch days {
-    case let .workday(message, time):
-        print("\(message) и \(time)")
-    case let .weekend(weekendMess):
-        print("\(weekendMess)")
-    }
-}
-
-setAlarm(days: .weekend("hello"))
-
-setAlarm(days: days)
-
-struct PositionOnMap {
-    var player: String
-    var x: Int
-    var y: Int
-    
-    func getPosition(){
-        print("The Position of \(player): x\(x):y\(y)")
-    }
-}
-
-let playerOnePosition = PositionOnMap(player: "Player One", x: 10, y: 3)
-
-playerOnePosition.player
-
-playerOnePosition.getPosition()
-
-class MacBook{
-    var name: String
-    var year: Int
-    var color: String
-    
-    init(name: String, year: Int, color: String){
-        self.name = name
-        self.year = year
-        self.color = color
-    }
-    
-    func getSpects(){
-        print("\(name) \(year) \(color)")
-    }
-}
-
-let macBookPro = MacBook(name: "MacBook Pro", year: 2018, color: "Silver")
-
-macBookPro.getSpects()
-
-let macBookAir = macBookPro
-macBookAir.name = "MacBook Air"
-
-macBookAir.getSpects()
-macBookPro.getSpects()
-
-struct iPhone {
-    var name: String
-    var color: String
-    var capacity: Int
-    
-    func getSpecs(){
-        print("\(name) \(color) \(capacity)Gb")
-    }
-}
-
-let iPhoneXR = iPhone(name: "iPhone XR", color: "Green", capacity: 128)
-
-iPhoneXR.getSpecs()
-
-var iPhoneX = iPhoneXR
-iPhoneX.name = "iPhone X"
-
-iPhoneX.getSpecs()
-iPhoneXR.getSpecs()
-
-struct Rectangl{
-    var width: Int
-    var height: Int
-    
-    func perimetr() -> Int{
-        return 2*(width+height)
-    }
-    
-   mutating func scale(width: Int, height: Int){
-        self.width += width
-        self.height += height
-    }
-}
-
-var rectanle = Rectangl(width: 10, height: 20)
-rectanle.perimetr()
-rectanle.scale(width: 10, height: 2)
-rectanle.perimetr()
+print(calculationType.addition.rawValue)
