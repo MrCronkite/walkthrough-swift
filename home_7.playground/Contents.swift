@@ -44,4 +44,18 @@ enum calculationType: String{
     case division
 }
 
+var calculate = calculationType.addition
+
+
+switch calculate{
+case .addition:
+    print("+")
+case .substraction:
+    print("-")
+case .multiolication:
+    print("*")
+case .division: 
+    print("/")
+}
+
 print(calculationType.addition.rawValue)
