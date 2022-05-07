@@ -46,16 +46,21 @@ enum calculationType: String{
 
 var calculate = calculationType.addition
 
-
-switch calculate{
+func calculateNumber(_ numberOne: Int, _ numberTwo: Int, _ calcType: calculationType) -> Float{
+switch calcType{
 case .addition:
-    print("+")
+    return Float(numberOne + numberTwo)
 case .substraction:
-    print("-")
+    return Float(numberOne - numberTwo)
 case .multiolication:
-    print("*")
-case .division: 
-    print("/")
+    return Float(numberOne * numberTwo)
+case .division:
+    return Float(numberOne / numberTwo)
 }
+}
+
+
+calculateNumber(6, 3, .multiolication)
+
 
 print(calculationType.addition.rawValue)
