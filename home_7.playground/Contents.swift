@@ -35,6 +35,10 @@ import Foundation
 */
 
 
+
+
+
+
 //задание 1
 
 enum calculationType: String{
@@ -64,3 +68,58 @@ calculateNumber(6, 3, .multiolication)
 
 
 print(calculationType.addition.rawValue)
+
+
+//задание 2
+
+enum CurrencyUnit{
+    
+    enum DollarCountrys: String{
+        case usa = "США"
+        case canada = "Канада"
+        case australia = "Aвстралия"
+    }
+    
+    case rouble(countries: [String], shortName:String)
+    case dollar(countries: [String], shortName:String, national: DollarCountrys)
+    case euro(countries: [String], shortName:String)
+}
+
+var roubleCurrency = CurrencyUnit.rouble(countries: ["Россия", "Беларусь"], shortName: "RUB")
+
+var dollarCurrency = CurrencyUnit.dollar(countries: ["CША", "Канада"], shortName: "USA", national: .usa)
+
+switch dollarCurrency {
+case let .dollar(countries, shortName, national):
+    print("\(countries.joined(separator: ", ")), кратка форма записи \(shortName) национальность \(national.rawValue)")
+case let .rouble(countries, shortName):
+    print("\(countries.joined(separator: ", ")), кратка форма записи \(shortName)")
+case let .euro(countries, shortName):
+    print("\(countries.joined(separator: ", ")), кратка форма записи \(shortName)")
+}
+
+
+//задание 3
+
+
+
+//задание 4
+
+struct PlayerInChess{
+    let name: String
+    var wins: Int
+    
+    func description(){
+        print("Имя игрока \(self.name), количество побед \(self.wins)")
+    }
+    mutating func addWins(_ addition: Int){
+        self.wins += addition
+    }
+}
+
+var playerInChess = PlayerInChess(name: "Влад", wins: 12)
+playerInChess.description()
+playerInChess.addWins(2)
+playerInChess.description()
+
+
