@@ -34,6 +34,18 @@ import Foundation
  4.6 Вызовите метода addWins из экземпляра структуры, затем вызовите метод description
 */
 
+struct Car {
+    var name: String
+    let productionYear: Int
+    let horsePower: Int
+
+}
+
+var honda = Car(name: "Honda", productionYear: 2001, horsePower: 100)
+
+var hondaCivic = honda
+hondaCivic.name = "Honda Civic"
+
 
 
 
