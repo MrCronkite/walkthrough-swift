@@ -34,18 +34,6 @@ import Foundation
  4.6 Вызовите метода addWins из экземпляра структуры, затем вызовите метод description
 */
 
-struct Car {
-    var name: String
-    let productionYear: Int
-    let horsePower: Int
-
-}
-
-var honda = Car(name: "Honda", productionYear: 2001, horsePower: 100)
-
-var hondaCivic = honda
-hondaCivic.name = "Honda Civic"
-
 
 
 
@@ -113,6 +101,24 @@ case let .euro(countries, shortName):
 
 //задание 3
 
+struct Car {
+    var name: String
+    var productionYear: Int
+    var horsePower: Int
+
+}
+
+var honda = Car(name: "Honda", productionYear: 2001, horsePower: 100)
+
+var hondaCivic = honda
+hondaCivic.name = "Honda Civic"
+
+for _ in 1...5{
+    hondaCivic.horsePower += 1
+}
+
+print("Мощность двигателя \(honda.name) составляет \(honda.horsePower) л.с.")
+print("Мощность двигателя \(hondaCivic.name) составляет \(hondaCivic.horsePower) л.с.")
 
 
 //задание 4
