@@ -44,16 +44,15 @@ protocol Shop {
 // TODO: your implementation goes here
 class ShopImpl: Shop {
     
-    var array: Array<Product> = []
+    var dictionary: Dictionary<String, Product> = [:]
     
     func addNewProduct(product: Product) -> Bool {
-
-        for element in array {
-            if element.id == product.id {
-                return false
-            }
+         
+        if dictionary[product.id] != nil {
+            return false
         }
-        array.append(product)
+        
+        dictionary.updateValue(product, forKey: product.id)
         return true
         
     }
@@ -61,15 +60,10 @@ class ShopImpl: Shop {
     
     
     func deleteProduct(id: String) -> Bool {
-
-        for (index, element) in array.enumerated() {
-            if element.id == id {
-                array.remove(at: index)
-                return true
-            }
-        }
-
-        return false
+       
+        guard dictionary.removeValue(forKey: id) != nil else { return false }
+        return true
+        
     }
     
     
@@ -78,13 +72,13 @@ class ShopImpl: Shop {
         
         var result: Set<String> = []
         
-        for i in array {
-            if i.name.contains(searchString) {
-                let sameNameElementsArray = array.filter({$0.name == i.name && $0.id != i.id})
+        for item in dictionary.values {
+            if item.name.contains(searchString) {
+                let sameNameElementsArray = dictionary.values.filter({$0.name == item.name && $0.id != item.id})
                 if !sameNameElementsArray.isEmpty {
-                    result.insert("\(i.producer) - \(i.name)")
+                    result.insert("\(item.producer) - \(item.name)")
                 } else {
-                    result.insert("\(i.name)")
+                    result.insert("\(item.name)")
                 }
             }
         }
@@ -95,11 +89,11 @@ class ShopImpl: Shop {
     
     func listProductsByProducer(searchString: String) -> [String] {
         var newArray: [String] = []
-        let sortArray = array.sorted(by: {$0.producer < $1.producer})
+        let sortDict = dictionary.values.sorted(by: {$0.producer < $1.producer})
         
-        for i in sortArray {
-            if i.producer.contains(searchString){
-                newArray.append(i.name)
+        for item in sortDict {
+            if item.producer.contains(searchString){
+                newArray.append(item.name)
             }
         }
             
