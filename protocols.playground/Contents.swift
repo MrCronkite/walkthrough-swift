@@ -65,16 +65,6 @@ let grass2 = Grass(type: "St. Augustine")
 var array: [EntryName] = [cow1, student1, grass1, cow2, student3, grass2, student2]
 
 
-//for value in array {
-//
-//    switch value{
-//    case let grass as Grass: print(grass.type)
-//    case let cow as Cow: print(cow.name ?? "a cow")
-//    case let student as Student: print(student.fullName)
-//    default: break
-//    }
-//}
-
 func printName( array: [EntryName]){
     
     array.sorted(by: {a, b in
