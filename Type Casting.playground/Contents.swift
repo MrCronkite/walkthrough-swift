@@ -54,3 +54,70 @@ if pet is Dog{
 } else {
   print("another animal")
 }
+
+
+
+func arrayAnimal() -> [Animal] {
+    var pets: [Animal] = []
+    
+    let countDogs = Int.random(in: 0...10)
+    let countBird = Int.random(in: 0...10)
+    let countCats = Int.random(in: 0...10)
+    
+    for _ in 1...countDogs {
+        let dog = Dog(name: "Bob")
+        pets.append(dog)
+    }
+    
+    for _ in 1...countBird {
+        let bird = Bird(name: "Murzik")
+        pets.append(bird)
+    }
+    
+    for _ in 1...countCats {
+        let cat = Cat(name: "Kirik")
+        pets.append(cat)
+    }
+    
+    return pets
+}
+
+let pets = arrayAnimal()
+
+var dogCount = 0
+var catCount = 0
+var birdCount = 0
+
+for pet in pets {
+    if pet is Dog {
+        dogCount += 1
+    }else if pet is Cat {
+        catCount += 1
+    }else if pet is Bird {
+        birdCount += 1
+    }
+}
+
+print("dogs = \(dogCount), cats = \(catCount), birds = \(birdCount)")
+
+func walkDog(dog: Dog) {
+    print("dogs \(dog.name)")
+}
+
+func walkCats(cats: Cat){
+    print("cats \(cats.name)")
+}
+
+func flightBirds(birds: Bird){
+    print("birds \(birds.name)")
+}
+
+for pet in pets {
+    if let dog = pet as? Dog{
+        walkDog(dog: dog)
+    }else if let cat = pet as? Cat{
+        walkCats(cats: cat)
+    }else if let bird = pet as? Bird{
+        flightBirds(birds: bird)
+    }
+}
