@@ -81,3 +81,37 @@ func printName( array: [EntryName]){
 }
 
 printName(array: array)
+
+
+// Делегирование
+
+protocol ButtonDelegate {
+    func userTappedButton(_ button: Button)
+    
+}
+
+class Button {
+    let tittle: String
+    var delegate: ButtonDelegate?
+    
+    init(tittle: String) {
+        self.tittle = tittle
+    }
+    
+    func taped() {
+        delegate?.userTappedButton(self)
+    }
+}
+
+class GameController: ButtonDelegate {
+    func userTappedButton(_ button: Button) {
+        print("user pressed \(button.tittle)")
+    }
+}
+
+let button = Button(tittle: "enter")
+let gameController = GameController()
+
+button.delegate = gameController
+button.taped()
+
