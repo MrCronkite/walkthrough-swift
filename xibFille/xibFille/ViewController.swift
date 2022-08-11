@@ -16,8 +16,8 @@ class ViewController: UIViewController {
     }
 
     @IBAction func buttonTapt() {
-        let vc = SecondaryViewController(nibName: "SecondaryViewController", bundle: nil)
-        vc.text = "Наш новый текст"
+        let vc = SecondaryViewController(nibName: "XibView", bundle: nil)
+        vc.text = "Hello world"
         navigationController?.pushViewController(vc, animated: true)
         print("hello")
     }

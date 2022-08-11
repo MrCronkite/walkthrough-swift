@@ -29,6 +29,45 @@
                                     <action selector="buttonTapt" destination="BYZ-38-t0r" eventType="touchUpInside" id="XRB-Xd-lhC"/>
                                 </connections>
                             </button>
+                            <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="w4X-wL-x0e" customClass="XibView" customModule="xibFille" customModuleProvider="target">
+                                <rect key="frame" x="60" y="183" width="295" height="366"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4QY-IF-Xvv">
+                                        <rect key="frame" x="126.5" y="172.5" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <viewLayoutGuide key="safeArea" id="cYS-9k-8Di"/>
+                                <color key="backgroundColor" red="0.57640790939999997" green="0.2899071574" blue="0.56865078209999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstItem="4QY-IF-Xvv" firstAttribute="centerX" secondItem="w4X-wL-x0e" secondAttribute="centerX" id="cPL-H6-uPU"/>
+                                    <constraint firstItem="4QY-IF-Xvv" firstAttribute="centerY" secondItem="w4X-wL-x0e" secondAttribute="centerY" id="oba-fj-pwG"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" id="dHb-nU-yDm" customClass="XibView" customModule="xibFille" customModuleProvider="target">
+                                <rect key="frame" x="162" y="89" width="90" height="66"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zNC-6S-MIU">
+                                        <rect key="frame" x="24" y="22.5" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <viewLayoutGuide key="safeArea" id="wHV-9e-Mxv"/>
+                                <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                                <constraints>
+                                    <constraint firstItem="zNC-6S-MIU" firstAttribute="centerY" secondItem="dHb-nU-yDm" secondAttribute="centerY" id="02V-ex-eUh"/>
+                                    <constraint firstItem="zNC-6S-MIU" firstAttribute="centerX" secondItem="dHb-nU-yDm" secondAttribute="centerX" id="Iej-X3-nXc"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="labelView" destination="zNC-6S-MIU" id="kmn-tp-zKA"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -41,13 +80,16 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="65" y="60"/>
+            <point key="canvasLocation" x="63.768115942028992" y="59.598214285714285"/>
         </scene>
     </scenes>
     <resources>
         <image name="pencil.slash" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

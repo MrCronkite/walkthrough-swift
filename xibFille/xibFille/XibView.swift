@@ -8,6 +8,8 @@
 import UIKit
 
 class XibView: UIView {
+    
+    var text: String = "vlad"
 
     @IBOutlet weak var labelView: UILabel!
     
@@ -20,10 +22,12 @@ class XibView: UIView {
         
     }
     
-//    private func commonInit(){
-//        Bundle.main.loadNibNamed("TestView", owner: self, options: self)
-//    }
+    func viewDidLoad() {
+        self.viewDidLoad()
+        
     
+        labelView.text = text
+    }
     
     
 }
