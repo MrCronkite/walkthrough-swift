@@ -20,9 +20,9 @@ class XibView: UIView {
         
     }
     
-    private func commonInit(){
-        Bundle.main.loadNibNamed("TestView", owner: <#T##Any?#>, options: <#T##[UINib.OptionsKey : Any]?#>)
-    }
+//    private func commonInit(){
+//        Bundle.main.loadNibNamed("TestView", owner: self, options: self)
+//    }
     
     
     

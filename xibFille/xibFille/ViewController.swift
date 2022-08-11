@@ -8,12 +8,18 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    var text: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 
-
+    @IBAction func buttonTapt() {
+        let vc = SecondaryViewController(nibName: "SecondaryViewController", bundle: nil)
+        vc.text = "Наш новый текст"
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }
 
