@@ -19,6 +19,7 @@ class ViewController: UIViewController {
         let vc = SecondaryViewController(nibName: "SecondaryViewController", bundle: nil)
         vc.text = "Наш новый текст"
         navigationController?.pushViewController(vc, animated: true)
+        print("hello")
     }
     
 }
