@@ -9,6 +9,8 @@ import UIKit
 
 class SecondaryViewController: UIViewController {
     
+    var delegate: ViewControllerDelegate?
+    
     var text: String
     var buttonData = UIButton()
     
@@ -41,8 +43,8 @@ class SecondaryViewController: UIViewController {
     @objc func sendText(sender: UIButton){
         let storyboardMain = UIStoryboard(name: "Main", bundle: nil)
         guard let vc1 = storyboardMain.instantiateViewController(identifier: "VC1") as? ViewController else {return}
-        vc1.text = text
         show(vc1, sender: nil)
+        delegate?.update(text: "delegate")
     }
     
     
