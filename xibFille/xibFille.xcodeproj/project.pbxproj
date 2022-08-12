@@ -17,7 +17,7 @@
 		B2974B0A28A5815400C42F9B /* XibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2974B0928A5815400C42F9B /* XibView.swift */; };
 		B2974B0D28A588EF00C42F9B /* SecondaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2974B0B28A588EF00C42F9B /* SecondaryViewController.swift */; };
 		B2974B0E28A588EF00C42F9B /* SecondaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2974B0C28A588EF00C42F9B /* SecondaryViewController.xib */; };
-		B2974B1028A58E5B00C42F9B /* ThirdView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2974B0F28A58E5B00C42F9B /* ThirdView.storyboard */; };
+		B2974B1228A6C0B700C42F9B /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2974B1128A6C0B700C42F9B /* ThirdViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +33,7 @@
 		B2974B0928A5815400C42F9B /* XibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibView.swift; sourceTree = "<group>"; };
 		B2974B0B28A588EF00C42F9B /* SecondaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryViewController.swift; sourceTree = "<group>"; };
 		B2974B0C28A588EF00C42F9B /* SecondaryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecondaryViewController.xib; sourceTree = "<group>"; };
-		B2974B0F28A58E5B00C42F9B /* ThirdView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ThirdView.storyboard; sourceTree = "<group>"; };
+		B2974B1128A6C0B700C42F9B /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +72,7 @@
 				B2974B0B28A588EF00C42F9B /* SecondaryViewController.swift */,
 				B2974B0C28A588EF00C42F9B /* SecondaryViewController.xib */,
 				B2974B0728A580AC00C42F9B /* View.xib */,
-				B2974B0F28A58E5B00C42F9B /* ThirdView.storyboard */,
+				B2974B1128A6C0B700C42F9B /* ThirdViewController.swift */,
 				B2974AF728A5807500C42F9B /* ViewController.swift */,
 				B2974AF928A5807500C42F9B /* Main.storyboard */,
 				B2974AFC28A5807700C42F9B /* Assets.xcassets */,
@@ -143,7 +143,6 @@
 				B2974B0828A580AD00C42F9B /* View.xib in Resources */,
 				B2974B0028A5807700C42F9B /* LaunchScreen.storyboard in Resources */,
 				B2974AFD28A5807700C42F9B /* Assets.xcassets in Resources */,
-				B2974B1028A58E5B00C42F9B /* ThirdView.storyboard in Resources */,
 				B2974B0E28A588EF00C42F9B /* SecondaryViewController.xib in Resources */,
 				B2974AFB28A5807500C42F9B /* Main.storyboard in Resources */,
 			);
@@ -160,6 +159,7 @@
 				B2974AF428A5807500C42F9B /* AppDelegate.swift in Sources */,
 				B2974B0A28A5815400C42F9B /* XibView.swift in Sources */,
 				B2974AF628A5807500C42F9B /* SceneDelegate.swift in Sources */,
+				B2974B1228A6C0B700C42F9B /* ThirdViewController.swift in Sources */,
 				B2974B0D28A588EF00C42F9B /* SecondaryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
