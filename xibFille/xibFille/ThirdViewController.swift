@@ -20,7 +20,7 @@ class ThirdViewController: UIViewController {
         myLabel.text = name
     }
     @IBAction func buttonAction(_ sender: Any) {
-        let secondvyVC = SecondaryViewController(text: "vladik", nibName: "SecondaryViewController", bundle: nil)
+        let secondvyVC = SecondaryViewController(text: self.name, nibName: "SecondaryViewController", bundle: nil)
         show(secondvyVC, sender: nil)
     }
     

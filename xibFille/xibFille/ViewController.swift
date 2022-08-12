@@ -10,13 +10,16 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var myTextField: UITextField!
-    //var text: String = ""
-    let labelText: UILabel
+    var text: String = ""
+    let labelText = UILabel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        labelText.frame.
+        labelText.frame = CGRect(x: 100, y: 400, width: 200, height: 200)
+        labelText.text = text
+        labelText.textColor = .red
+        self.view.addSubview(labelText)
     }
     
     @IBAction func getVC(_ sender: Any) {
