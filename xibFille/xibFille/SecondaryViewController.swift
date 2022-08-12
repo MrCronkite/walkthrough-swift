@@ -9,9 +9,18 @@ import UIKit
 
 class SecondaryViewController: UIViewController {
     
-    var text: String = ""
-
+    var text: String
+    
     @IBOutlet weak var textLabel: UILabel!
+    
+    init(text: String, nibName: String?, bundle: Bundle?){
+        self.text = text
+        super.init(nibName: nibName, bundle: bundle)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("ffff")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
