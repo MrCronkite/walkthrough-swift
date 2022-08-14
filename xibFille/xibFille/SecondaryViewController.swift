@@ -45,6 +45,7 @@ class SecondaryViewController: UIViewController {
         guard let vc1 = storyboardMain.instantiateViewController(identifier: "VC1") as? ViewController else {return}
         show(vc1, sender: nil)
         delegate?.update(text: "delegate")
+        print(delegate)
     }
     
     

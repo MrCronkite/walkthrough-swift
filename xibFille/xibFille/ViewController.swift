@@ -24,6 +24,7 @@ class ViewController: UIViewController, ViewControllerDelegate {
     }
     
     func update(text: String) {
+        print("update")
         labelText.frame = CGRect(x: 100, y: 400, width: 200, height: 200)
         labelText.textColor = .red
         labelText.text = text
