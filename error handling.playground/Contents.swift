@@ -12,3 +12,5 @@ do {
 } catch let MyError{
     print(MyError.localizedDescription)
 }
+
+let result = try? delay(a: 4, b: 2)
