@@ -19,8 +19,7 @@ class ViewController: UIViewController, ViewControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-       
+                
     }
     
     func update(text: String) {
