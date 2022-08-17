@@ -19,7 +19,7 @@ let result = try? delay(a: 4, b: 2)
 //error Network
 
 class Network {
-    static let responses = [201, 401, 500]
+    static let responses = [201, 401, 500, 499]
     
     static func responsesDone() -> Int {
         return responses.randomElement()!
@@ -28,6 +28,7 @@ class Network {
 
 enum ErrorRequest: Error {
     case pageNotFound
+    case indefinedError
     case internalError(Int, String)
 }
 
@@ -37,6 +38,7 @@ class NetworkMenage {
         
         guard statuscode != 401 else { throw ErrorRequest.pageNotFound}
         guard statuscode != 500 else { throw ErrorRequest.internalError(statuscode, "internet server error")}
+        guard statuscode != 499 else {throw ErrorRequest.indefinedError}
         
         return "picture with \(text)"
     }
@@ -50,25 +52,29 @@ class Browser {
         self.networkManager = networkManager
     }
     
-    func getPage(request: String){
+    func getPage(request: String) throws {
         do {
             let result = try networkManager.userMenager(text: request)
             print(result)
         } catch ErrorRequest.pageNotFound {
             print("page not found")
         } catch let ErrorRequest.internalError(code, reason) {
-            print("\(code) and \(reason)")
-        } catch {
-            print(error.localizedDescription)
-        }
+            print("\(code) and \(reason)")}
+//        } catch {
+//            print(error.localizedDescription)
+//        }
     }
 }
 
 let network = NetworkMenage()
 let chrome = Browser(networkManager: network)
-chrome.getPage(request: "Dogs")
-chrome.getPage(request: "Dogs")
-chrome.getPage(request: "Dogs")
-chrome.getPage(request: "Dogs")
-chrome.getPage(request: "Dogs")
+do {
+    try    chrome.getPage(request: "Dogs")
+    try    chrome.getPage(request: "Dogs")
+    try    chrome.getPage(request: "Dogs")
+    try    chrome.getPage(request: "Dogs")
+    try    chrome.getPage(request: "Dogs")
+} catch {
+    print(error)
+}
 
