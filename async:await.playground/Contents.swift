@@ -33,7 +33,7 @@ func chopVegatables(complition: @escaping(([Vegatables]) -> Void)) {
     for rawVega in rawVegatables {
         let operation = BlockOperation{
             rawVega.chokeVega(complition: {chopVegatables in
-                chopVegatables.append(String(chopVegatables))
+               // chopVegatables.append(String(chopVegatables))
             })
         }
         queue.addOperation {operation}
@@ -50,3 +50,37 @@ chopVegatables{ vegs in
         print(" \(veg.id) and \(String(describing: veg.chokeVega))")
     }
 }
+
+
+
+//pyramide of doom
+
+func getUserId(_ complition: @escaping(Int) -> Void) {
+    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        complition(42)
+    }
+}
+
+func getUserFirstname(userId: Int, _ complition: @escaping(String) -> Void) {
+    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        complition("Vlad")
+    }
+}
+
+func getUserLastname(userId: Int, _ complition: @escaping(String) -> Void) {
+    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        complition("Volodin")
+    }
+}
+
+func getUser() {
+    getUserId { userId in
+        getUserFirstname(userId: userId) { firsyName in
+            getUserLastname(userId: userId) { lastName in
+                print("\(firsyName) \(lastName)")
+            }
+        }
+    }
+}
+
+getUser() 
