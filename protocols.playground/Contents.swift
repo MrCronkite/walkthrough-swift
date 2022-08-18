@@ -169,3 +169,57 @@ for i in myArrey {
 print(powNumber(FirstNumber()  ))
 print(powNumber(TwoNumber()   ))
 
+
+//расширения в протоколах
+
+protocol Example1 {
+    var number1: Int {get}
+}
+
+protocol Example2 {
+    var number2: Int {get set}
+}
+
+protocol MainProtocol: Example1, Example2 {}
+
+class ClassExample: MainProtocol {
+    var number1: Int = 2
+    
+    var number2: Int = 6
+
+}
+
+struct StructExample: MainProtocol {
+    var number1: Int = 5
+    
+    var number2: Int = 8
+    
+}
+
+var class1 = ClassExample()
+var struct1 = StructExample()
+
+extension Example1 {
+    func method() {
+        print("hello extension exaple1")
+    }
+}
+
+extension Example2 {
+    mutating func methodMutating(value: Int) {
+        self.number2 = value
+    }
+}
+
+extension MainProtocol {
+    func sumProperties() -> Int {
+        return self.number2 + self.number1
+    }
+}
+
+class1.method()
+struct1.method()
+class1.methodMutating(value: 5)
+struct1.methodMutating(value: 9)
+struct1.sumProperties()
+class1.sumProperties()
