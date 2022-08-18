@@ -133,6 +133,15 @@ struct TwoNumber: MyCount {
     var name = "Dart wider"
 }
 
+var myArrey: [MyCount] = []
+
+myArrey.append(FirstNumber() )
+myArrey.append(TwoNumber() )
+
+for i in myArrey {
+    print(i.count)
+}
+
 print(powNumber(FirstNumber()  ))
 print(powNumber(TwoNumber()   ))
 
