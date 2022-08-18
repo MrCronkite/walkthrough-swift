@@ -116,14 +116,23 @@ button.delegate = gameController
 button.taped()
 
 
-func delay(a: Int, b: Int) throws -> Int {
-    guard b != 0 else { throw NSError(domain: "на ноль делить нельзя", code: 2)}
-    return a / b
+protocol MyCount {
+    var count: Int { get }
 }
 
-do {
-    try delay(a: 4, b: 0)
-} catch {
-    print(error.localizedDescription)
+func powNumber(_ value: MyCount) -> Int {
+    return value.count * value.count
 }
+
+class FirstNumber: MyCount {
+    var count: Int = 5
+}
+
+struct TwoNumber: MyCount {
+    var count: Int = 6
+    var name = "Dart wider"
+}
+
+print(powNumber(FirstNumber()  ))
+print(powNumber(TwoNumber()   ))
 
