@@ -61,9 +61,25 @@ func getUserId(_ complition: @escaping(Int) -> Void) {
     }
 }
 
+func getUserId() async -> Int {
+    return await withUnsafeContinuation { continuation in
+        getUserId { id in
+            continuation.resume(returning: id)
+        }
+    }
+}
+
 func getUserFirstname(userId: Int, _ complition: @escaping(String) -> Void) {
     DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
         complition("Vlad")
+    }
+}
+ 
+func getUserFirstname(userId: Int) async -> String {
+    return await withUnsafeContinuation { continuation in
+        getUserFirstname(userId: userId) { firstname in
+            continuation.resume(returning: firstname)
+        }
     }
 }
 
@@ -73,14 +89,35 @@ func getUserLastname(userId: Int, _ complition: @escaping(String) -> Void) {
     }
 }
 
-func getUser() {
-    getUserId { userId in
-        getUserFirstname(userId: userId) { firsyName in
-            getUserLastname(userId: userId) { lastName in
-                print("\(firsyName) \(lastName)")
-            }
+func getUserLastname(userId: Int) async -> String {
+    return await withUnsafeContinuation { continuation in
+        getUserLastname(userId: userId) { lastName in
+            continuation.resume(returning: lastName)
         }
     }
 }
+ 
+func getUser() async {
+    let userid = await getUserId()
+    let firstName = await getUserFirstname(userId: userid)
+    let lastName = await getUserLastname(userId: userid)
+    
+    print("\(firstName) \(lastName)")
+//    getUserId { userId in
+//        getUserFirstname(userId: userId) { firsyName in
+//            getUserLastname(userId: userId) { lastName in
+//                print("\(firsyName) \(lastName)")
+//            }
+//        }
+//    }
+}
 
-getUser() 
+func doRegularWork() {
+    Task {
+        await getUser()
+    }
+}
+
+doRegularWork()
+
+
