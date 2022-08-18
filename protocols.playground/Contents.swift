@@ -116,9 +116,17 @@ button.delegate = gameController
 button.taped()
 
 
+//наследование
+
 protocol MyCount {
     var count: Int { get }
 }
+
+protocol SecondCound {
+    var number: Int { get }
+}
+
+protocol Chaldren: SecondCound, MyCount {}
 
 func powNumber(_ value: MyCount) -> Int {
     return value.count * value.count
@@ -132,6 +140,22 @@ struct TwoNumber: MyCount {
     var count: Int = 6
     var name = "Dart wider"
 }
+
+//Подписываемся на соблюдение нескольких протоколов
+class classForMultipleInheritance: SecondCound, MyCount {
+    var number: Int = 2
+    var count: Int = 2
+}
+
+//Подписываемся на протокол, который наследует другие протоколы
+class classForInheritingMultipleProtocol : Chaldren {
+    var number: Int = 2
+    var count: Int = 2
+}
+
+class ChaildClass: classForInheritingMultipleProtocol {}
+
+print( powNumber( ChaildClass() ))
 
 var myArrey: [MyCount] = []
 
