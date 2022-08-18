@@ -27,4 +27,20 @@ func == (a: Point, b: Point) -> Bool {
 
 print(p1 == p2)
 
+prefix func ++ ( a: inout Point) -> Point{
+    a.x += 1
+    a.y += 1
+    return a
+}
 
+postfix func ++ (a: inout Point) -> Point {
+    let b = a
+    ++a
+    return b
+}
+
+p1 = Point(x: 5, y: 6)
+p2 = Point(x: 8, y: 2)
+
+print(p1++)
+print(++p1)
