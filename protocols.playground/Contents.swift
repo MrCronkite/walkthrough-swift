@@ -115,3 +115,15 @@ let gameController = GameController()
 button.delegate = gameController
 button.taped()
 
+
+func delay(a: Int, b: Int) throws -> Int {
+    guard b != 0 else { throw NSError(domain: "на ноль делить нельзя", code: 2)}
+    return a / b
+}
+
+do {
+    try delay(a: 4, b: 0)
+} catch {
+    print(error.localizedDescription)
+}
+
