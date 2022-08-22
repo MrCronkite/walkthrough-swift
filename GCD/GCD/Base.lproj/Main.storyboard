@@ -63,6 +63,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="5BT-Tm-2yv"/>
+                    <connections>
+                        <outlet property="imageView" destination="XFx-2D-NMD" id="Pw8-ao-MKn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y85-Hb-3fu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
