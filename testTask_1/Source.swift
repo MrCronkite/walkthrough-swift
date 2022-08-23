@@ -38,25 +38,5 @@ struct Source {
         ]
     }
     
-    static func dataFetch() {
-        guard let url = URL(string: "https://junior.balinasoft.com/api/v2/photo/type?page=2"
-        ) else {return}
-        
-        let session = URLSession.shared
-        session.dataTask(with: url) { (data, response, error) in
-            
-            guard let data = data else { return }
-            
-            do {
-            let coursesPage = try JSONDecoder().decode(ContentParc.self, from: data)
-                print(coursesPage.content ?? "")
-            } catch {
-                print("тут ошибка \(error)")
-            }
-            
-
-        }.resume()
-    }
-    
 }
 

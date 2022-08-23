@@ -12,8 +12,8 @@ class TableViewCell: UITableViewCell {
     let avatar = UIImageView()
     let nameLable: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14)
-        label.textColor = .lightGray
+        label.font = UIFont.systemFont(ofSize: 16)
+        label.textColor = .darkText
         return label
     }()
     
@@ -33,23 +33,32 @@ class TableViewCell: UITableViewCell {
             contentView.addSubview($0)
         }
         
+        
         NSLayoutConstraint.activate([
         
-            avatar.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
-            avatar.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            avatar.heightAnchor.constraint(equalToConstant: 32),
-            avatar.widthAnchor.constraint(equalToConstant: 32),
+            avatar.topAnchor.constraint(equalTo: contentView.topAnchor),
+            avatar.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
+            avatar.heightAnchor.constraint(equalToConstant: 44),
+            avatar.widthAnchor.constraint(equalToConstant: 44),
             
             nameLable.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
-            nameLable.leadingAnchor.constraint(equalTo: avatar.trailingAnchor, constant: 8),
-            nameLable.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8)
+            nameLable.leadingAnchor.constraint(equalTo: avatar.trailingAnchor, constant: 18),
+            nameLable.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 18)
             
         ])
     }
     
     func config(content: Content) {
-        avatar.image = UIImage(systemName: "image")
-        nameLable.text = content.name
+        nameLable.text = content.name ?? ""
+        
+        DispatchQueue.global().async {
+            guard let imageUrl = URL(string: content.image ?? "") else { return }
+            guard let imageData = try? Data(contentsOf: imageUrl) else { return }
+            
+            DispatchQueue.main.async {
+                self.avatar.image = UIImage(data: imageData)
+            }
+        }
     }
 
 }
