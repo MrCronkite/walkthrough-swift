@@ -18,7 +18,36 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         Source.dataFetch()
+        setupTableView()
+        
+        tableView.register(TableViewCell.self, forCellReuseIdentifier: "TableViewCell")
+        
+        tableView.delegate = self
+        tableView.dataSource = self
     }
+    
+}
+
+
+extension ViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        content.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: "TableViewCell",
+            for: indexPath) as? TableViewCell
+        else { fatalError() }
+        
+        cell.config(content: content[indexPath.row])
+        
+        return cell
+    }
+    
+}
+
+extension ViewController: UITableViewDelegate {
     
 }
 
@@ -35,4 +64,6 @@ extension ViewController {
         ])
     }
 }
+
+
 
