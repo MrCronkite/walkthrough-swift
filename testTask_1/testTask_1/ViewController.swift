@@ -57,13 +57,36 @@ class ViewController: UIViewController {
     func postDat(indexPath: IndexPath) {
         let item = course_[indexPath.row].id
         
-        let data: [Photo] = [
-            .init(id: item ?? 0, image: "", name: "vladislav")
-        ]
+//        let data: [Photo] = [
+//            .init(id: item ?? 0, image: "", name: "vladislav")
+//        ]
+//
+//        self.dataFromCamera.append(contentsOf: data)
         
-        self.dataFromCamera.append(contentsOf: data)
+        guard let url = URL(string: "https://junior.balinasoft.com/api/v2/photo") else { return }
+        let parametrs = ["name": "vladSH", "image": "", "id": "23"]
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        print(self.dataFromCamera)
+        guard let httpBody = try? JSONSerialization.data(withJSONObject: parametrs, options: []) else { return }
+        request.httpBody = httpBody
+        
+        let session = URLSession.shared
+        session.dataTask(with: request) { data, response, error in
+            if let response = response {
+                print(response)
+            }
+            
+            guard let data = data else { return }
+            do {
+                let json = try JSONSerialization.jsonObject(with: data, options: [])
+                print("json \(json)")
+            } catch {
+                print("errorrrr \(error)")
+            }
+        }.resume()
+        
     }
     
     
