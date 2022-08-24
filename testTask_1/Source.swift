@@ -21,22 +21,11 @@ struct ContentParc: Decodable {
     let nft: Int?
     let total: Int?
 }
-
-
-struct Source {
-    static func makeContacts() -> [Content] {
-        [
-            .init(id: 23, image: "ghbce", name: "sdcdcsd"),
-            .init(id: 23, image: "ghbce", name: "sdcdcsd"),
-            .init(id: 23, image: "ghbce", name: "sdcdcsd"),
-            .init(id: 23, image: "ghbce", name: "sdcdcsd"),
-            .init(id: 23, image: "ghbce", name: "sdcdcsd"),
-            .init(id: 23, image: "ghbce", name: "sdcdcsd"),
-            .init(id: 23, image: "ghbce", name: "sdcdcsd"),
-            .init(id: 23, image: "ghbce", name: "sdcdcsd"),
-            .init(id: 23, image: "ghbce", name: "sdcdcsd")
-        ]
-    }
     
+
+struct Photo{
+    var id: Int
+    var image: String
+    var name: String
 }
 

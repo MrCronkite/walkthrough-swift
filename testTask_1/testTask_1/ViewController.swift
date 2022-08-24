@@ -9,30 +9,26 @@ import UIKit
 
 class ViewController: UIViewController {
     
-   // var content = Source.makeContacts()
     var pageItem: Int = 2
     
     private var course_: [Content] = []
     
     let tableView: UITableView = .init()
+    var dataFromCamera: [Photo] = []
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         dataFetch()
-        //Source.dataFetch()
         setupTableView()
         
         tableView.register(TableViewCell.self, forCellReuseIdentifier: "TableViewCell")
         
         tableView.delegate = self
         tableView.dataSource = self
+
         
-        
-        
-       // print("nnnnnnnnnnnnn \(self.course_)")
     }
-    
     
     
     func dataFetch() {
@@ -58,6 +54,19 @@ class ViewController: UIViewController {
 
         }.resume()}
     
+    func postDat(indexPath: IndexPath) {
+        let item = course_[indexPath.row].id
+        
+        let data: [Photo] = [
+            .init(id: item ?? 0, image: "", name: "vladislav")
+        ]
+        
+        self.dataFromCamera.append(contentsOf: data)
+        
+        print(self.dataFromCamera)
+    }
+    
+    
 }
 
 
@@ -80,9 +89,41 @@ extension ViewController: UITableViewDataSource {
 }
 
 extension ViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+                    
+        postDat(indexPath: indexPath)
+        
+        let actionSheet = UIAlertController(title: nil,
+                                            message: nil,
+                                            preferredStyle: .actionSheet)
+                    
+        let camera = UIAlertAction(title: "Camera", style: .default) { _ in
+            self.chooseImagePicker(source: .camera)
+        }
+                    
+           
+           // camera.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+                    
+        let photo = UIAlertAction(title: "Photo", style: .default) { _ in
+            self.chooseImagePicker(source: .photoLibrary)
+        }
+    
+           // photo.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+                    
+            let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+                    
+            actionSheet.addAction(camera)
+            actionSheet.addAction(photo)
+            actionSheet.addAction(cancel)
+                    
+            present(actionSheet, animated: true)
+        }
+    
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let position = scrollView.contentOffset.y
-        if position > (tableView.contentSize.height - scrollView.frame.size.height + 50){
+        if position > (tableView.contentSize.height - scrollView.frame.size.height + 20){
         
         self.tableView.tableFooterView = createSpinerFooter()
             
@@ -114,6 +155,30 @@ extension ViewController: UITableViewDelegate {
         
           }
 
+}
+
+
+extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func chooseImagePicker(source: UIImagePickerController.SourceType) {
+        
+                let imagePicker = UIImagePickerController()
+                imagePicker.delegate = self
+                imagePicker.allowsEditing  = true
+                imagePicker.sourceType = source
+                present(imagePicker, animated:  true)
+        
+        }
+    
+    func imagePickerController(_ picker: UIImagePickerController,
+                            didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        let photo = info[.editedImage] as? UIImage
+        
+        print(" ccdcdc  \(photo!)")
+        
+         
+       }
 }
 
 
