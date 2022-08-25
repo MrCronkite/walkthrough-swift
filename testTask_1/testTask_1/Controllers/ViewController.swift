@@ -9,14 +9,11 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var pageItem: Int = 2
-    var idCell: Int = 0
+    var getIdCell: Int = 0
     
     private var course_: [Content] = []
     
     let tableView: UITableView = .init()
-    var dataFromCamera: [Photo] = []
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +24,11 @@ class ViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-        
     }
+}
+
+
+extension ViewController {
     
     //GET запрос
     func dataFetch() {
@@ -39,7 +39,6 @@ class ViewController: UIViewController {
         session.dataTask(with: url) { (data, response, error) in
 
             guard let data = data else { return }
-            
             do {
                 let dataf = try JSONDecoder().decode(ContentParc.self, from: data)
                 self.course_ =  dataf.content!
@@ -49,13 +48,12 @@ class ViewController: UIViewController {
             } catch {
                 print(error)
             }
-            
-        }.resume()}
+        }.resume()
+    }
     
-    //POST запрос
-    func postData(id: Int, image: UIImage) {
+   //POST запрос
+   private func postData(id: Int, image: UIImage) {
         guard let url = URL(string: "https://junior.balinasoft.com/api/v2/photo") else { return }
-       // let image = UIImage(named: "image")
         let imageData = image.jpegData(compressionQuality: 0.7)
         let base64Img = imageData?.base64EncodedString()
         let parametrs = ["name": "vlad","photo": "\(base64Img ?? "")", "typeId": "\(id)"]
@@ -71,7 +69,6 @@ class ViewController: UIViewController {
             if let response = response {
                 print(response)
             }
-            
             guard let data = data else { return }
             do {
                 let json = try JSONSerialization.jsonObject(with: data, options: [])
@@ -80,11 +77,8 @@ class ViewController: UIViewController {
                 print("errorrrr \(error)")
             }
         }.resume()
-        
     }
-    
 }
-
 
 //datasource таблицы
 extension ViewController: UITableViewDataSource {
@@ -105,17 +99,18 @@ extension ViewController: UITableViewDataSource {
     
 }
 
-
 //delegat таблицы
 extension ViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
                     
-        idCell = course_[indexPath.row].id ?? 0
+        
+        getIdCell = course_[indexPath.row].id ?? 0
         
         /*
-        создаем алерт, для выбора фото из камеры и галерии,
-        так как нет возможности использовать камеру.
+        создаем алерт, для выбора фото из камеры илигалерии,
+        так как у меня нет возможности использовать камеру,
+         а у галереи похожий функционал для данной задачи
          */
         let actionSheet = UIAlertController(title: nil,
                                             message: nil,
@@ -136,12 +131,13 @@ extension ViewController: UITableViewDelegate {
     
     //подгрузка данных при скролинге списка
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        var pageItem = 2
         let position = scrollView.contentOffset.y
         if position > (tableView.contentSize.height - scrollView.frame.size.height + 20){
         
         self.tableView.tableFooterView = createSpinerFooter()
             
-        guard let url = URL(string: "https://junior.balinasoft.com/api/v2/photo/type?page=\(self.pageItem)")
+        guard let url = URL(string: "https://junior.balinasoft.com/api/v2/photo/type?page=\(pageItem)")
             else {return}
             
             let session = URLSession.shared
@@ -152,10 +148,15 @@ extension ViewController: UITableViewDelegate {
                 do {
                     let dataf = try JSONDecoder().decode(ContentParc.self, from: data)
                     self.course_.append(contentsOf: dataf.content!)
-                    if self.pageItem > 7 {
-                        self.pageItem = 1
-                    } else {
-                        self.pageItem = self.pageItem + 1
+                    switch pageItem {
+                    case 1: pageItem = 2
+                    case 2: pageItem = 3
+                    case 3: pageItem = 4
+                    case 4: pageItem = 5
+                    case 5: pageItem = 6
+                    case 6: pageItem = 7
+                    case 7: pageItem = 1
+                    default: return
                     }
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
@@ -171,6 +172,7 @@ extension ViewController: UITableViewDelegate {
 
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    //вызываем экран камеры/галерии
     func chooseImagePicker(source: UIImagePickerController.SourceType) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
@@ -185,7 +187,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
         guard let photo = info[.editedImage] as? UIImage else { return }
         dismiss(animated: true, completion: nil)
         
-        postData(id: self.idCell, image: photo)
+        postData(id: self.getIdCell, image: photo)
         
        }
 }
@@ -193,7 +195,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
 
 //спинер для подрузки данных
 extension ViewController {
-    private func createSpinerFooter() -> UIView {
+     func createSpinerFooter() -> UIView {
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100))
         
         let spiner = UIActivityIndicatorView()
@@ -207,7 +209,8 @@ extension ViewController {
 
 //отображение таблицы
 extension ViewController {
-    func setupTableView() {
+     func setupTableView() {
+        tableView.backgroundColor = .systemBlue
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([

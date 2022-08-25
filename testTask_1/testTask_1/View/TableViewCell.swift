@@ -28,6 +28,8 @@ class TableViewCell: UITableViewCell {
     
     
     private func setupCell() {
+        self.backgroundColor = .clear
+        
         [avatar, nameLable].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             contentView.addSubview($0)

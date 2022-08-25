@@ -22,9 +22,3 @@ struct ContentParc: Decodable {
     let total: Int?
 }
     
-struct Photo{
-    var id: Int
-    var image: String
-    var name: String
-}
-
