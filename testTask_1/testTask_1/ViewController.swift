@@ -26,37 +26,34 @@ class ViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-
         
     }
     
-    
+    //GET запрос
     func dataFetch() {
         guard let url = URL(string: "https://junior.balinasoft.com/api/v2/photo/type?page=1"
         ) else {return}
         
         let session = URLSession.shared
         session.dataTask(with: url) { (data, response, error) in
-            
+
             guard let data = data else { return }
             
             do {
                 let dataf = try JSONDecoder().decode(ContentParc.self, from: data)
                 self.course_ =  dataf.content!
-                print(self.course_.count)
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
             } catch {
-                print("тут ошибка \(error)")
+                print(error)
             }
             
-
         }.resume()}
     
-    func postDat(indexPath: IndexPath) {
-        let item = course_[indexPath.row].id
-        
+    //POST запрос
+    func postData(indexPath: IndexPath) {
+//        let item = course_[indexPath.row].id
 //        let data: [Photo] = [
 //            .init(id: item ?? 0, image: "", name: "vladislav")
 //        ]
@@ -89,10 +86,10 @@ class ViewController: UIViewController {
         
     }
     
-    
 }
 
 
+//datasource таблицы
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         self.course_.count
@@ -111,39 +108,36 @@ extension ViewController: UITableViewDataSource {
     
 }
 
+
+//delegat таблицы
 extension ViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
                     
-        postDat(indexPath: indexPath)
+        postData(indexPath: indexPath)
         
+        /*
+        создаем алерт, для выбора фото из камеры и галерии,
+        так как нет возможности использовать камеру.
+         */
         let actionSheet = UIAlertController(title: nil,
                                             message: nil,
                                             preferredStyle: .actionSheet)
-                    
         let camera = UIAlertAction(title: "Camera", style: .default) { _ in
             self.chooseImagePicker(source: .camera)
         }
-                    
-           
-           // camera.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
-                    
         let photo = UIAlertAction(title: "Photo", style: .default) { _ in
             self.chooseImagePicker(source: .photoLibrary)
         }
-    
-           // photo.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
                     
-            let cancel = UIAlertAction(title: "Cancel", style: .cancel)
-                    
-            actionSheet.addAction(camera)
-            actionSheet.addAction(photo)
-            actionSheet.addAction(cancel)
-                    
-            present(actionSheet, animated: true)
+        actionSheet.addAction(camera)
+        actionSheet.addAction(photo)
+        actionSheet.addAction(cancel)
+        present(actionSheet, animated: true)
         }
     
-    
+    //подгрузка данных при скролинге списка
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let position = scrollView.contentOffset.y
         if position > (tableView.contentSize.height - scrollView.frame.size.height + 20){
@@ -170,41 +164,36 @@ extension ViewController: UITableViewDelegate {
                         self.tableView.reloadData()
                     }
                 } catch {
-                    print("тут ошибка \(error)")
+                    print(error)
                 }
                 
-
             }.resume()}
-        
           }
-
 }
 
 
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func chooseImagePicker(source: UIImagePickerController.SourceType) {
-        
-                let imagePicker = UIImagePickerController()
-                imagePicker.delegate = self
-                imagePicker.allowsEditing  = true
-                imagePicker.sourceType = source
-                present(imagePicker, animated:  true)
-        
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.allowsEditing  = true
+        imagePicker.sourceType = source
+        present(imagePicker, animated:  true)
         }
     
-    func imagePickerController(_ picker: UIImagePickerController,
-                            didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    //получаем фото из камеры/галереи
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         let photo = info[.editedImage] as? UIImage
         
         print(" ccdcdc  \(photo!)")
         
-         
        }
 }
 
 
+//спинер для подрузки данных
 extension ViewController {
     private func createSpinerFooter() -> UIView {
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100))
@@ -218,6 +207,7 @@ extension ViewController {
     }
 }
 
+//отображение таблицы
 extension ViewController {
     func setupTableView() {
         view.addSubview(tableView)
