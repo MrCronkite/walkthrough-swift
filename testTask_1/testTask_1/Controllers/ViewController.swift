@@ -10,6 +10,7 @@ import UIKit
 class ViewController: UIViewController {
     
     var pageItem: Int = 2
+    var idCell: Int = 0
     
     private var course_: [Content] = []
     
@@ -52,19 +53,15 @@ class ViewController: UIViewController {
         }.resume()}
     
     //POST запрос
-    func postData(indexPath: IndexPath) {
-//        let item = course_[indexPath.row].id
-//        let data: [Photo] = [
-//            .init(id: item ?? 0, image: "", name: "vladislav")
-//        ]
-//
-//        self.dataFromCamera.append(contentsOf: data)
-        
+    func postData(id: Int, image: UIImage) {
         guard let url = URL(string: "https://junior.balinasoft.com/api/v2/photo") else { return }
-        let parametrs = ["name": "vladSH", "image": "", "id": "23"]
+       // let image = UIImage(named: "image")
+        let imageData = image.jpegData(compressionQuality: 0.7)
+        let base64Img = imageData?.base64EncodedString()
+        let parametrs = ["name": "vlad","photo": "\(base64Img ?? "")", "typeId": "\(id)"]
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("multipart/form-data", forHTTPHeaderField: "Content-Type")
         
         guard let httpBody = try? JSONSerialization.data(withJSONObject: parametrs, options: []) else { return }
         request.httpBody = httpBody
@@ -114,7 +111,7 @@ extension ViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
                     
-        postData(indexPath: indexPath)
+        idCell = course_[indexPath.row].id ?? 0
         
         /*
         создаем алерт, для выбора фото из камеры и галерии,
@@ -185,9 +182,10 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
     //получаем фото из камеры/галереи
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
-        let photo = info[.editedImage] as? UIImage
+        guard let photo = info[.editedImage] as? UIImage else { return }
+        dismiss(animated: true, completion: nil)
         
-        print(" ccdcdc  \(photo!)")
+        postData(id: self.idCell, image: photo)
         
        }
 }
