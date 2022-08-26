@@ -11,9 +11,9 @@ class ViewController: UIViewController {
     
     var getIdCell: Int = 0
     
-    private var course_: [Content] = []
+    private var contentSource: [Content] = []
     
-    let tableView: UITableView = .init()
+    let tableView = UITableView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,10 +27,8 @@ class ViewController: UIViewController {
     }
 }
 
-
 extension ViewController {
     
-    //GET запрос
     func dataFetch() {
         guard let url = URL(string: "https://junior.balinasoft.com/api/v2/photo/type?page=1"
         ) else {return}
@@ -40,8 +38,8 @@ extension ViewController {
 
             guard let data = data else { return }
             do {
-                let dataf = try JSONDecoder().decode(ContentParc.self, from: data)
-                self.course_ =  dataf.content!
+                let data = try JSONDecoder().decode(ContentParc.self, from: data)
+                self.contentSource =  data.content!
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
@@ -51,8 +49,7 @@ extension ViewController {
         }.resume()
     }
     
-   //POST запрос
-   private func postData(id: Int, image: UIImage) {
+    func postData(id: Int, image: UIImage) {
         guard let url = URL(string: "https://junior.balinasoft.com/api/v2/photo") else { return }
         let imageData = image.jpegData(compressionQuality: 0.7)
         let base64Img = imageData?.base64EncodedString()
@@ -80,10 +77,9 @@ extension ViewController {
     }
 }
 
-//datasource таблицы
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        self.course_.count
+        self.contentSource.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -92,20 +88,19 @@ extension ViewController: UITableViewDataSource {
             for: indexPath) as? TableViewCell
         else { fatalError() }
         
-        cell.config(content: course_[indexPath.row])
+        cell.config(content: contentSource[indexPath.row])
         
         return cell
     }
     
 }
 
-//delegat таблицы
 extension ViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
                     
         
-        getIdCell = course_[indexPath.row].id ?? 0
+        getIdCell = contentSource[indexPath.row].id ?? 0
         
         /*
         создаем алерт, для выбора фото из камеры илигалерии,
@@ -129,13 +124,13 @@ extension ViewController: UITableViewDelegate {
         present(actionSheet, animated: true)
         }
     
-    //подгрузка данных при скролинге списка
+    //MARK: Spiner logic
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         var pageItem = 2
         let position = scrollView.contentOffset.y
         if position > (tableView.contentSize.height - scrollView.frame.size.height + 20){
         
-        self.tableView.tableFooterView = createSpinerFooter()
+        tableView.tableFooterView = createSpinerFooter()
             
         guard let url = URL(string: "https://junior.balinasoft.com/api/v2/photo/type?page=\(pageItem)")
             else {return}
@@ -146,8 +141,8 @@ extension ViewController: UITableViewDelegate {
                 guard let data = data else { return }
                 
                 do {
-                    let dataf = try JSONDecoder().decode(ContentParc.self, from: data)
-                    self.course_.append(contentsOf: dataf.content!)
+                    let data = try JSONDecoder().decode(ContentParc.self, from: data)
+                    self.contentSource.append(contentsOf: data.content!)
                     switch pageItem {
                     case 1: pageItem = 2
                     case 2: pageItem = 3
@@ -172,7 +167,6 @@ extension ViewController: UITableViewDelegate {
 
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    //вызываем экран камеры/галерии
     func chooseImagePicker(source: UIImagePickerController.SourceType) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
@@ -181,7 +175,6 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
         present(imagePicker, animated:  true)
         }
     
-    //получаем фото из камеры/галереи
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         guard let photo = info[.editedImage] as? UIImage else { return }
@@ -193,7 +186,6 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
 }
 
 
-//спинер для подрузки данных
 extension ViewController {
      func createSpinerFooter() -> UIView {
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100))
@@ -207,7 +199,6 @@ extension ViewController {
     }
 }
 
-//отображение таблицы
 extension ViewController {
      func setupTableView() {
         tableView.backgroundColor = .systemBlue

@@ -45,18 +45,18 @@
 			isa = PBXGroup;
 			children = (
 				B2669D1728B5321100B0EEF5 /* TableViewCell.swift */,
-				B225E49328B7ED2000C7FD1A /* Storybords */,
+				B225E49328B7ED2000C7FD1A /* Storyboards */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		B225E49328B7ED2000C7FD1A /* Storybords */ = {
+		B225E49328B7ED2000C7FD1A /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
 				B2A1F78028B7DE86006BD6BD /* Main.storyboard */,
 				B2A1F77E28B7DE64006BD6BD /* LaunchScreen.storyboard */,
 			);
-			path = Storybords;
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 		B225E49528B7ED6C00C7FD1A /* Model */ = {

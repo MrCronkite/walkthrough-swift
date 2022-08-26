@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import UIKit
 
 struct Content: Decodable {
     let id: Int?
@@ -17,8 +16,8 @@ struct Content: Decodable {
 struct ContentParc: Decodable {
     let content: [Content]?
     let page: Int?
-    let pagesz: Int?
-    let nft: Int?
-    let total: Int?
+    let pageSize: Int?
+    let totalElements: Int?
+    let totalPages: Int?
 }
     
