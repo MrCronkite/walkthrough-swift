@@ -42,64 +42,54 @@ protocol Shop {
 }
 
 // TODO: your implementation goes here
-class ShopImpl: Shop {
+final class ShopImpl: Shop {
     
-    var dictionary: Dictionary<String, Product> = [:]
+    var products: Dictionary<String, Product> = [:]
     
     func addNewProduct(product: Product) -> Bool {
-         
-        if dictionary[product.id] != nil {
+        if products[product.id] != nil {
             return false
         }
+        products.updateValue(product, forKey: product.id)
         
-        dictionary.updateValue(product, forKey: product.id)
         return true
-        
     }
-    
-    
     
     func deleteProduct(id: String) -> Bool {
-       
-        guard dictionary.removeValue(forKey: id) != nil else { return false }
-        return true
+        guard products.removeValue(forKey: id) != nil else { return false }
         
+        return true
     }
     
-    
-    
     func listProductsByName(searchString: String) -> Set<String> {
+        var listProducts: Set<String> = []
         
-        var result: Set<String> = []
-        
-        for item in dictionary.values {
+        for item in products.values {
             if item.name.contains(searchString) {
-                let sameNameElementsArray = dictionary.values.filter({$0.name == item.name && $0.id != item.id})
-                if !sameNameElementsArray.isEmpty {
-                    result.insert("\(item.producer) - \(item.name)")
+                let nameProduct = products.values.filter({$0.name == item.name && $0.id != item.id})
+                if !nameProduct.isEmpty {
+                    listProducts.insert("\(item.producer) - \(item.name)")
                 } else {
-                    result.insert("\(item.name)")
+                    listProducts.insert("\(item.name)")
                 }
             }
         }
-        return Set<String>(result.prefix(10))
+        
+        return Set<String>(listProducts.prefix(10))
     }
-    
-    
     
     func listProductsByProducer(searchString: String) -> [String] {
-        var newArray: [String] = []
-        let sortDict = dictionary.values.sorted(by: {$0.producer < $1.producer})
+        var listProducts: [String] = []
+        let productsByProducer = products.values.sorted(by: {$0.producer < $1.producer})
         
-        for item in sortDict {
+        for item in productsByProducer {
             if item.producer.contains(searchString){
-                newArray.append(item.name)
+                listProducts.append(item.name)
             }
         }
-            
-        return [String](newArray.prefix(10))
+        
+        return [String](listProducts.prefix(10))
     }
-    
 }
 
 
@@ -135,7 +125,7 @@ func test(lib: Shop) {
     
     var byProducer: [String] = lib.listProductsByProducer(searchString: "Producer")
     assert(byProducer.count == 10)
-
+    
     byProducer = lib.listProductsByProducer(searchString: "Some Producer")
     assert(byProducer.count == 4)
     assert(byProducer[0] == "Some Product1")

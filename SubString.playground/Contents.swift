@@ -17,8 +17,6 @@ extension String {
 }
 
 
-
-
 let someString: String = "test\ndfd1fd 2A  sdfdftest\n"
 
 
@@ -26,4 +24,17 @@ print(someString.getRage(with: 16))
 print(someString.getRage(with: 1))
 print(someString.getRage(with: 4))
 print(someString.getRage(with: 17))
+
+var sum = 0
+var arrr = []
+
+for _ in 1...11 {
+    sum += 10000
+    arrr.append(sum)
+}
+
+arrr.reduce(into: 0) { partialResult, <#Any#> in
+    <#code#>
+}
+print(sum)
 
